@@ -1,50 +1,54 @@
 import React from 'react';
 import { BaseLink, useRoute } from 'react-router5';
+import './Nav.css';
 
 function Nav() {
   const {router} = useRoute();
 
   const menuItems = [
     {
-      title: 'Смотреть',
-      link: '#'
+      title: 'Home',
+      link: 'home',
+      routeOptions: {
+        reload: true
+      }
     },
     {
-      title: 'Фильмы',
-      link: '#'
+      title: 'Library',
+      link: 'library',
+      routeOptions: {}
     },
     {
-      title: 'Медиатека',
-      link: '#'
+      title: 'Search',
+      link: 'search',
+      routeOptions: {}
     },
     {
-      title: 'Поиск',
-      link: '#'
-    },
-    {
-      title: 'Настройки',
-      link: '#'
+      title: 'Settings',
+      link: 'settings',
+      routeOptions: {}
     },
   ];
 
+  const menu = menuItems.map(({title, link, routeOptions: {reload}}) => {
+    return (
+      <li key={title} className="navItem">
+        <BaseLink
+          router={router}
+          routeName={link}
+          routeOptions={reload}
+        >
+          {title}
+        </BaseLink>
+      </li>
+    );
+  });
+
   return (
     <nav>
-      <BaseLink
-        router={router}
-        routeName="home"
-        routeOptions={{reload: true}}
-      >
-        Home
-      </BaseLink>
-      <BaseLink router={router} routeName="about">
-        About
-      </BaseLink>
-      <BaseLink router={router} routeName="search">
-        Search
-      </BaseLink>
-      <BaseLink router={router} routeName="settings">
-        Settings
-      </BaseLink>
+      <ul className="navList">
+        {menu}
+      </ul>
     </nav>
   );
 }

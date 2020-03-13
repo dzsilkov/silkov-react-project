@@ -1,10 +1,10 @@
 import React from 'react'
 import { useRouteNode } from 'react-router5'
 import Home from '../Home/Home';
-import About from '../About/About';
 import Search from '../Search/Search';
 import { Settings } from '../Settings/Settings';
 import NotFound from '../NotFound/NotFound';
+import Library from '../Library/Library';
 
 function Main(props) {
   const { route } = useRouteNode('');
@@ -14,8 +14,8 @@ function Main(props) {
     return <Home />
   }
 
-  if (topRouteName === 'about') {
-    return <About />
+  if (topRouteName === 'library') {
+    return <Library />
   }
 
   if (topRouteName === 'search') {
@@ -25,7 +25,6 @@ function Main(props) {
   if (topRouteName === 'settings') {
     return <Settings />
   }
-
 
   return <NotFound />
 }
