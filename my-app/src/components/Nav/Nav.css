@@ -1,18 +1,8 @@
-nav {
+.nav {
   font-size: 1rem;
   display: flex;
-  justify-content: center;
+  align-items: center;
   padding: .5em;
-}
-
-.navList {
-  margin: 0 auto;
-  font-size: 1rem;
-  display: flex;
-  justify-content: center;
-  flex-flow: row wrap;
-  border-radius: 1.4em;
-  background: rgba(0, 0, 0, .8);
 }
 
 .actionUpDown {
@@ -45,41 +35,10 @@ nav {
   transition: all .2s ease-in-out;
 }
 
-.navItem a {
-  margin: 0 .3em;
-  color: rgba(255, 255, 255, .8);
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 2em;
-  text-align: center;
-  padding: 0 2em;
-  outline: none;
-  cursor: pointer;
-  display: block;
-  border-radius: 1.4em;
-  transition: .2s;
-  will-change: transform;
-}
-
-.navItem a:hover {
-  transform: scale(1.1);
-  color: rgba(255, 255, 255, 1);
-  border-radius: 1.4em;
-  transition: .2s;
-}
-
-.navItem a.active {
-  transform: scale(1.2);
-  color: rgba(0, 0, 0, .8);
-  background: rgba(255, 255, 255, 1);
-  border-radius: 1.4em;
-  transition: .2s;
-  /*color: rgba(255, 99, 71, .8);*/
-}
 
 @media screen and (min-width: 1600px) {
   .navItem a {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 600;
     line-height: 2.2em;
     border-radius: 1.4em;

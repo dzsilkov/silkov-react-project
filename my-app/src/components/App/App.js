@@ -1,17 +1,20 @@
 import React from 'react';
 import './App.css';
-import Nav from '../Nav/Nav';
-import Main from '../Main/Main';
+import Layout from '../Layout/Layout';
+
 
 function App() {
   return (
-    <div className="app">
-      <header className="app-header">
-        <Nav />
-      </header>
-      <Main/>
-    </div>
+    <Layout/>
   );
 }
 
 export default App;
+
+
+{/*<header className="app-header">*/
+}
+{/*<Nav />*/
+}
+{/*</header>*/
+}

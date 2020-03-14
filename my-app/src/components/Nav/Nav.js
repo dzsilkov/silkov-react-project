@@ -1,6 +1,8 @@
 import React from 'react';
-import { BaseLink, useRoute } from 'react-router5';
+import { useRoute } from 'react-router5';
+import { faCog, faSearch, faTv, faHome } from '@fortawesome/free-solid-svg-icons';
 import './Nav.css';
+import NavList from '../NavList/NavList';
 
 function Nav() {
   const {router} = useRoute();
@@ -9,6 +11,8 @@ function Nav() {
     {
       title: 'Home',
       link: 'home',
+      icon: faHome,
+      color: '#157DC3',
       routeOptions: {
         reload: true
       }
@@ -16,39 +20,30 @@ function Nav() {
     {
       title: 'Library',
       link: 'library',
+      icon: faTv,
+      color: '#157DC3',
       routeOptions: {}
     },
     {
       title: 'Search',
       link: 'search',
+      icon: faSearch,
+      color: '#157DC3',
       routeOptions: {}
     },
     {
       title: 'Settings',
       link: 'settings',
+      icon: faCog,
+      color: '#157DC3',
       routeOptions: {}
     },
   ];
 
-  const menu = menuItems.map(({title, link, routeOptions: {reload}}) => {
-    return (
-      <li key={title} className="navItem">
-        <BaseLink
-          router={router}
-          routeName={link}
-          routeOptions={reload}
-        >
-          {title}
-        </BaseLink>
-      </li>
-    );
-  });
 
   return (
-    <nav>
-      <ul className="navList">
-        {menu}
-      </ul>
+    <nav className="nav">
+      <NavList menuItems={menuItems} router={router}/>
     </nav>
   );
 }
