@@ -36,9 +36,9 @@ const Footer = (props) => {
 
 
   return (
-    <footer className="footer">
+    <div className="footerLayout">
       <SocialList socialItems={socialItems}/>
-    </footer>
+    </div>
   );
 };
 

@@ -1,11 +1,9 @@
 import React from 'react';
-import { useRoute } from 'react-router5';
 import { faCog, faSearch, faTv, faHome } from '@fortawesome/free-solid-svg-icons';
 import './Nav.css';
 import NavList from '../NavList/NavList';
 
 function Nav() {
-  const {router} = useRoute();
 
   const menuItems = [
     {
@@ -43,7 +41,7 @@ function Nav() {
 
   return (
     <nav className="nav">
-      <NavList menuItems={menuItems} router={router}/>
+      <NavList menuItems={menuItems}/>
     </nav>
   );
 }

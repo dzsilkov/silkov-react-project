@@ -1,0 +1,65 @@
+.settingsListItem a {
+  margin: 0 0 .6em;
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 2.2em;
+  height: 2.2em;
+  text-align: center;
+  padding: 0 1em;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  border-radius: .5em;
+  color: rgba(255, 255, 255, 1);
+  background: rgba(0, 0, 0, .5);
+  transition: .3s;
+  will-change: transform;
+  width: 100%;
+}
+
+.settingsListItemTitle {
+  color: rgba(255, 255, 255, 1);
+}
+
+.settingsListItemStatus {
+  padding-left: 8em;
+  color: rgba(255, 255, 255, .5);
+}
+
+.settingsListItemIcon {
+  color: rgba(255, 255, 255, 1);
+  padding-left: .4em;
+}
+
+.settingsListItem a.active {
+  color: gold;
+}
+
+.settingsListItem a:hover {
+  transition: .4s;
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 5);
+  border-radius: .5em;
+}
+
+.settingsListItem a:hover .settingsListItemTitle,
+.settingsListItem a:hover .settingsListItemStatus,
+.settingsListItem a:hover .settingsListItemIcon {
+  color: rgba(0, 0, 0, .8);
+}
+
+@media screen and (max-width: 480px) {
+  .settingsListItemTitle {
+    font-size: 1rem;
+    line-height: 2em;
+    margin: 0 .3em .3em;
+  }
+
+  .settingsListItemStatus {
+    padding-left: 4em;
+  }
+}
+
+

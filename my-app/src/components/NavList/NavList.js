@@ -2,11 +2,11 @@ import React from 'react';
 import NavItem from '../NavItem/NavItem';
 import './NavList.css';
 
-const NavList = ({router, menuItems}) => {
+const NavList = ({menuItems}) => {
 
   const menu = menuItems.map(item => {
     return (
-      <NavItem item={item} key={item.title} router={router}/>
+      <NavItem item={item} key={item.title}/>
     );
   });
 

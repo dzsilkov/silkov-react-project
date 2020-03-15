@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from '../Main/Main';
+import MainOutlet from '../MainOutlet/MainOutlet';
 import './Layout.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -11,7 +11,7 @@ const Layout = (props) => {
         <Header/>
       </header>
       <main>
-        <Main/>
+        <MainOutlet/>
       </main>
       <footer>
         <Footer/>

@@ -28,6 +28,10 @@ export const routes = [
         path: '/language'
       },
       {
+        name: 'location',
+        path: '/location'
+      },
+      {
         name: 'help',
         path: '/help'
       }

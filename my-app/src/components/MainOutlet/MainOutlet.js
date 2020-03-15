@@ -2,11 +2,11 @@ import React from 'react'
 import { useRouteNode } from 'react-router5'
 import Home from '../Home/Home';
 import Search from '../Search/Search';
-import { Settings } from '../Settings/Settings';
+import Settings from '../Settings/Settings';
 import NotFound from '../NotFound/NotFound';
 import Library from '../Library/Library';
 
-function Main(props) {
+function MainOutlet() {
   const { route } = useRouteNode('');
   const topRouteName = route.name.split('.')[0];
 
@@ -29,4 +29,4 @@ function Main(props) {
   return <NotFound />
 }
 
-export default Main
+export default MainOutlet
