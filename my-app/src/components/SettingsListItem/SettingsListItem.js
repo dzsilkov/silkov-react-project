@@ -6,7 +6,7 @@ import { useRouteNode } from 'react-router5';
 import { Link } from 'react-router5';
 
 
-const SettingsListItem = ({handlerHover, item: {id, status, title, active, link}}) => {
+const SettingsListItem = ({handlerHover, item: {id, status, title, active, link, routeOptions: {reload}}}) => {
 
   const {router} = useRouteNode('settings');
   const statusText = status ? 'on' : 'off';
@@ -19,7 +19,7 @@ const SettingsListItem = ({handlerHover, item: {id, status, title, active, link}
       <Link
         router={router}
         routeName={link}
-        
+        routeOptions={reload}
       >
         <span className="settingsListItemTitle">{title}</span>
         <span className="settingsListItemStatus">

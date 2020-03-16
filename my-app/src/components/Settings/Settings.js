@@ -13,7 +13,9 @@ export const settingsItems = [
     icon: faUserCircle,
     active: 'active',
     link: 'settings.accounts',
-    routeOptions: {}
+    routeOptions: {
+      reload: true
+    }
   },
   {
     id: 'about',
@@ -89,10 +91,10 @@ class Settings extends React.Component {
       <section className="settings">
         <div className="settings-col">
           <SettingsLogo hoveredItem={hoveredItem}/>
-          <SettingsOutlet/>
         </div>
         <div className="settings-col">
           <SettingsList settingsItems={settingsItems} handlerHover={this.handlerHover}/>
+          <SettingsOutlet/>
         </div>
       </section>
     );

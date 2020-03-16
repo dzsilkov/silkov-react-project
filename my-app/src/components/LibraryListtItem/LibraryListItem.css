@@ -1,0 +1,28 @@
+.libraryListItem {
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .6em 1.2em;
+  background: #fff;
+}
+
+.libraryListItem:nth-child(2n) {
+  background: #f5f4f5;
+}
+
+.libraryListItemHeader h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.libraryListItemHeader p {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.actionFavourite,
+.actionListened {
+  padding-left: .8em;
+  cursor: pointer;
+}
