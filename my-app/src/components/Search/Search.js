@@ -2,7 +2,7 @@ import React from 'react';
 
 const Search = () => {
   return (
-    <div className="search" >
+    <section className="search" >
       <div className="w-full max-w-md bg-gray-800" >
         <form action="" className=" bg-white shadow-md rounded px-8 py-8 pt-8">
           <div className="px-4 pb-4">
@@ -18,7 +18,7 @@ const Search = () => {
           </div>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -10,11 +10,3 @@ function App() {
 }
 
 export default App;
-
-
-{/*<header className="app-header">*/
-}
-{/*<Nav />*/
-}
-{/*</header>*/
-}

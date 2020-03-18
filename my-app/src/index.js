@@ -1,18 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux/store/store';
 
-import App from './components/App/App';
 import { RouterProvider } from 'react-router5';
-import createRouter from './../src/router/create-router';
+import { router } from './router/router';
 import './styles/tailwind.css';
-
-const router = createRouter();
+import App from './components/App/App';
 
 router.start(() => {
-  ReactDOM.render(
-    <RouterProvider router={router}>
-      <App/>
-    </RouterProvider>,
+  render(
+    <Provider store={store}>
+      <RouterProvider router={router}>
+        <App/>
+      </RouterProvider>
+    </Provider>,
     document.getElementById('root')
   );
 });

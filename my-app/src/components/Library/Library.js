@@ -100,11 +100,11 @@ class Library extends React.Component {
     const listenedCollection = playlist.filter(item => item.listened);
 
     return (
-      <div className="library">
+      <section className="library">
         <LibraryList title={'Playlist'} collection={playlist} handlerToggle={this.handlePlaylistToggle}/>
         <LibraryList title={'Listened'} collection={listenedCollection} handlerToggle={this.handlePlaylistToggle}/>
         <LibraryList title={'Favourite'} collection={favoriteCollection} handlerToggle={this.handlePlaylistToggle}/>
-      </div>
+      </section>
     );
   }
 }

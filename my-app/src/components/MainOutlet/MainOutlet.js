@@ -1,32 +1,32 @@
-import React from 'react'
-import { useRouteNode } from 'react-router5'
+import React from 'react';
+import { useRouteNode } from 'react-router5';
 import Home from '../Home/Home';
 import Search from '../Search/Search';
 import Settings from '../Settings/Settings';
 import NotFound from '../NotFound/NotFound';
 import Library from '../Library/Library';
 
-function MainOutlet() {
-  const { route } = useRouteNode('');
+const MainOutlet = () => {
+  const {route} = useRouteNode('');
   const topRouteName = route.name.split('.')[0];
 
   if (topRouteName === 'home') {
-    return <Home />
+    return <Home/>;
   }
 
   if (topRouteName === 'library') {
-    return <Library />
+    return <Library/>;
   }
 
   if (topRouteName === 'search') {
-    return <Search />
+    return <Search/>;
   }
 
   if (topRouteName === 'settings') {
-    return <Settings />
+    return <Settings/>;
   }
 
-  return <NotFound />
-}
+  return <NotFound/>;
+};
 
-export default MainOutlet
+export default MainOutlet;

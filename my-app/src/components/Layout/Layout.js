@@ -1,21 +1,15 @@
 import React from 'react';
-import MainOutlet from '../MainOutlet/MainOutlet';
 import './Layout.css';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import MainContentOutlet from '../MainContentOutlet/MainContentOutlet';
+import NavBar from '../NavBar/NavBar';
 
 const Layout = (props) => {
   return (
     <div className="wrapper">
-      <header>
-        <Header/>
-      </header>
-      <main>
-        <MainOutlet/>
-      </main>
-      <footer>
-        <Footer/>
-      </footer>
+      <NavBar/>
+      <MainContentOutlet/>
+      <Footer/>
     </div>
   );
 };
