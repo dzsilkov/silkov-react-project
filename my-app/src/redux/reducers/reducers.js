@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { reducers } from '../../containers/BooksList/reducers';
+import { reducers } from '../../containers/BooksScreen/reducers';
 
 export default combineReducers(
   {

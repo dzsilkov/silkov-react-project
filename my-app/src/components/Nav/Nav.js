@@ -1,5 +1,5 @@
 import React from 'react';
-import { faCog, faSearch, faTv, faHome, faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faSearch, faUserAlt, faUserNinja, faHome, faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import './Nav.css';
 import NavList from '../NavList/NavList';
 
@@ -7,8 +7,8 @@ function Nav() {
 
   const navItems = [
     {
-      title: 'Home',
-      link: 'home',
+      title: 'Books',
+      link: 'books',
       icon: faHome,
       color: '#157DC3',
       routeOptions: {
@@ -23,9 +23,9 @@ function Nav() {
       routeOptions: {}
     },
     {
-      title: 'Search',
-      link: 'search',
-      icon: faSearch,
+      title: 'Auth',
+      link: 'auth',
+      icon: faUserAlt,
       color: '#157DC3',
       routeOptions: {}
     },

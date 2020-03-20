@@ -12,7 +12,7 @@ export const settingsItems = [
     status: false,
     icon: faUserCircle,
     active: 'active',
-    link: '/settings/accounts',
+    link: 'settings.accounts',
     routeOptions: {
       reload: true
     }
@@ -23,7 +23,7 @@ export const settingsItems = [
     status: false,
     icon: faCogs,
     active: 'inActive',
-    link: '/settings/about',
+    link: 'settings.about',
     routeOptions: {}
   },
   {
@@ -32,7 +32,7 @@ export const settingsItems = [
     status: false,
     icon: faGlobe,
     active: 'inActive',
-    link: '/settings/language',
+    link: 'settings.language',
     routeOptions: {}
   },
   {
@@ -41,7 +41,7 @@ export const settingsItems = [
     status: false,
     icon: faLocationArrow,
     active: 'inActive',
-    link: '/settings/location',
+    link: 'settings.location',
     routeOptions: {}
   },
   {
@@ -50,7 +50,7 @@ export const settingsItems = [
     status: false,
     icon: faQuestion,
     active: 'inActive',
-    link: '/settings/help',
+    link: 'settings.help',
     routeOptions: {}
   },
 ];

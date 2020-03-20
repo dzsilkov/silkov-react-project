@@ -7,7 +7,7 @@ import {
 import { connect } from 'react-redux';
 import { getBooks, getBooksPerPage, getTotalBooks, getCurrentPage, getSelectedBook } from './selectors';
 
-import Home from '../../components/Home/Home';
+import Books from '../../components/Books/Books';
 
 const mapStateToProps = state => {
   const books = getBooks(state);
@@ -26,4 +26,4 @@ export default connect(
     setCurrentPage,
     setBooksPerPage
   }
-)(Home);
+)(Books);

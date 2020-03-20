@@ -1,11 +1,9 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { faPlusCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index.es';
-
-import { fetchBookById } from '../../containers/BooksList/actions';
-import { getSelectedBook } from '../../containers/BooksList/selectors';
+import { fetchBookById } from '../../containers/BooksScreen/actions';
+import { getSelectedBook } from '../../containers/BooksScreen/selectors';
 import './BookDetail.css';
 
 
@@ -15,8 +13,8 @@ class BookDetail extends React.Component {
   }
 
   componentDidMount() {
-    const {fetchBookById, match: {params}} = this.props;
-    fetchBookById(params.id);
+    const {fetchBookById, id} = this.props;
+    fetchBookById(id);
   }
 
 
@@ -63,7 +61,6 @@ const mapStateToProps = state => {
   const selectedBook = getSelectedBook(state);
   return {selectedBook};
 };
-
 
 export default connect(
   mapStateToProps,

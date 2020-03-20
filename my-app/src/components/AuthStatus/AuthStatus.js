@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
-import './AuthStatus.css'
+import React from 'react';
+import './AuthStatus.css';
 
-class AuthStatus extends Component {
-  static defaultProps = {};
+const AuthStatus = (props) => {
 
-
-  state = {};
-
-  render() {
-    return (
-      <div className="authStatus">
-        Auth
-      </div>
-    );
-  }
-}
+const name = 'Guest';
+  return (
+    <div className="authStatus">
+      {name}
+    </div>
+  );
+};
 
 export default AuthStatus;

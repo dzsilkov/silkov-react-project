@@ -1,18 +1,18 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router5';
 
 import './CarouselItemCard.css';
 
-const CarouselItemCard = ({book}) => {
+const CarouselItemCard = ({book: {id, coverImageUrl}}) => {
   return (
-    <div key={book.id} className="carouselItemCard">
+    <div key={id} className="carouselItemCard">
       <h4 className="itemCardTitle">Open</h4>
       <div className="itemCardMedia">
         <Link
-          key={book.id}
-          to={`/books/${book.id}`}
-
-        ><img src={book.coverImageUrl} alt=""/>
+          routeName="book"
+          routeParams={{id}}
+          activeClassName="active"
+        ><img src={coverImageUrl} alt=""/>
         </Link>
       </div>
       <div className="itemCardDetails">

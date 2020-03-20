@@ -3,12 +3,12 @@ import './SettingsListItem.css';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index.es';
 import { useRouteNode } from 'react-router5';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router5';
 
 
 const SettingsListItem = ({handlerHover, item: {id, status, title, active, link, routeOptions: {reload}}}) => {
 
-  // const {router} = useRouteNode('settings');
+  const {router} = useRouteNode('settings');
   const statusText = status ? 'on' : 'off';
 
 
@@ -17,10 +17,9 @@ const SettingsListItem = ({handlerHover, item: {id, status, title, active, link,
         onMouseEnter={handlerHover.bind(null, id)}
     >
       <Link
-        to={link}
-        // router={router}
-        // routeName={link}
-        // routeOptions={reload}
+        router={router}
+        routeName={link}
+        routeOptions={reload}
       >
         <span className="settingsListItemTitle">{title}</span>
         <span className="settingsListItemStatus">

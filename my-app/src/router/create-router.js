@@ -6,7 +6,7 @@ import routes from './routes';
 export default function configureRouter() {
   const router = createRouter(routes, {
     allowNotFound: true,
-    defaultRoute: 'home'
+    defaultRoute: 'books'
   });
 
   router.usePlugin(loggerPlugin);
