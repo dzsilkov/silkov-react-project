@@ -1,11 +1,11 @@
 import React from 'react';
-import { faCog, faSearch, faTv, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faSearch, faTv, faHome, faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import './Nav.css';
 import NavList from '../NavList/NavList';
 
 function Nav() {
 
-  const menuItems = [
+  const navItems = [
     {
       title: 'Home',
       link: 'home',
@@ -18,7 +18,7 @@ function Nav() {
     {
       title: 'Library',
       link: 'library',
-      icon: faTv,
+      icon: faBookOpen,
       color: '#157DC3',
       routeOptions: {}
     },
@@ -41,7 +41,7 @@ function Nav() {
 
   return (
     <nav className="nav">
-      <NavList menuItems={menuItems}/>
+      <NavList menuItems={navItems}/>
     </nav>
   );
 }

@@ -33,14 +33,12 @@
 
 /*ВЫРАВНИВАНИЕ И СТИЛЬ ТЕКСТА В ХЕДЕРЕ*/
 .header-content {
+  font-size: 1rem;
   display: flex;
   height: 100vh;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  z-index: 1;
   text-align: center;
   color: #fff;
 }

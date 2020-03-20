@@ -7,13 +7,11 @@ import AuthStatus from '../AuthStatus/AuthStatus';
 
 const NavBar = (props) => {
   return (
-    <header>
-      <div className="navBar">
-        <Logo/>
-        <Nav/>
-        <AuthStatus/>
-      </div>
-    </header>
+    <div className="navBar">
+      <Logo/>
+      <Nav/>
+      <AuthStatus/>
+    </div>
   );
 };
 

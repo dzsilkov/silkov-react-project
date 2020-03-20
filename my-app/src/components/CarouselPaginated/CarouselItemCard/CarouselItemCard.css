@@ -1,0 +1,52 @@
+.carouselItemCard {
+  font-size: 1rem;
+  position: relative;
+  padding: .2em 2em;
+  cursor: pointer;
+  border-radius: .3em;
+  background: rgba(0, 0, 0, .2);
+  transition: ease .5s;
+}
+
+img {
+  height: 10vh;
+}
+
+.itemCardTitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, .5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition: ease .5s;
+  opacity: 0;
+}
+
+.itemCardDetails {
+  font-size: .8rem;
+  color: rgba(255, 255, 255, .5);
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  bottom: 0;
+  transition: ease .5s;
+}
+
+.carouselItemCard:hover {
+  background: rgba(0, 0, 0, .8);
+  transform: scale(1.1);
+}
+
+.carouselItemCard:hover .itemCardTitle {
+  opacity: 1;
+  top: -1.2em;
+  color: rgba(255, 255, 255, 1);
+}
+
+.carouselItemCard:hover .itemCardDetails {
+  opacity: 1;
+  bottom: -2em;
+  color: rgba(255, 255, 255, 1);
+}
+

@@ -2,7 +2,7 @@ import React from 'react';
 import './Library.css'
 import LibraryList from '../LibraryList/LibraryList';
 
-const playlist =  [
+const books =  [
   {
     "id": 1,
     "artist": "Oasis",
@@ -66,7 +66,7 @@ class Library extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      playlist: []
+      books: []
     };
 
     this.handlePlaylistToggle = this.handlePlaylistToggle.bind(this);
@@ -75,35 +75,35 @@ class Library extends React.Component {
   componentDidMount() {
     this.setState(prevState => {
       return {
-        playlist: [...prevState.playlist, ...playlist],
+        books: [...prevState.books, ...books],
       };
     });
   }
 
   handlePlaylistToggle(id, prop) {
     this.setState(prevState => {
-      const updateItems = prevState.playlist.map(item => {
+      const updateItems = prevState.books.map(item => {
         return item.id === id
           ? {...item, [prop]: !item[prop]}
           : {...item}
       });
       return ({
-        playlist: updateItems
+        books: updateItems
       })
     });
   }
 
   render() {
 
-    const {playlist} = this.state;
-    const favoriteCollection = playlist.filter(item => item.favourite);
-    const listenedCollection = playlist.filter(item => item.listened);
+    const {books} = this.state;
+    const favoriteCollection = books.filter(item => item.favourite);
+    const listenedCollection = books.filter(item => item.listened);
 
     return (
       <section className="library">
-        <LibraryList title={'Playlist'} collection={playlist} handlerToggle={this.handlePlaylistToggle}/>
-        <LibraryList title={'Listened'} collection={listenedCollection} handlerToggle={this.handlePlaylistToggle}/>
-        <LibraryList title={'Favourite'} collection={favoriteCollection} handlerToggle={this.handlePlaylistToggle}/>
+        <LibraryList title={'My Books'} collection={books} handlerToggle={this.handlePlaylistToggle}/>
+        <LibraryList title={'Read Books'} collection={listenedCollection} handlerToggle={this.handlePlaylistToggle}/>
+        <LibraryList title={'Favourite Books'} collection={favoriteCollection} handlerToggle={this.handlePlaylistToggle}/>
       </section>
     );
   }

@@ -36,11 +36,9 @@ const Footer = (props) => {
 
 
   return (
-    <footer>
-      <div className="footerLayout">
-        <SocialList socialItems={socialItems}/>
-      </div>
-    </footer>
+    <div className="footerLayout">
+      <SocialList socialItems={socialItems}/>
+    </div>
   );
 };
 
