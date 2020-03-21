@@ -1,0 +1,22 @@
+.formFieldInput {
+  font-size: 1rem;
+  position: relative;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, .5);
+  font-size: 1rem;
+}
+
+.input:focus::placeholder {
+  color: transparent;
+}
+
+.icon {
+  top: calc(50% - .5em);
+  margin-right: 1em;
+  right: 0;
+  position: absolute;
+  z-index: 2;
+  cursor: pointer;
+}
