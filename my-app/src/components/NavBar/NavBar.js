@@ -5,12 +5,12 @@ import Nav from '../Nav/Nav';
 import AuthStatus from '../AuthStatus/AuthStatus';
 
 
-const NavBar = (props) => {
+const NavBar = ({authUser, isLoggedIn}) => {
   return (
     <div className="navBar">
       <Logo/>
-      <Nav/>
-      <AuthStatus/>
+      <Nav isLoggedIn={isLoggedIn}/>
+      <AuthStatus authUser={authUser}/>
     </div>
   );
 };

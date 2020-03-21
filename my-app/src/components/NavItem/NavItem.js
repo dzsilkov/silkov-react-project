@@ -1,17 +1,16 @@
 import React from 'react';
 import './NavItem.css'
 import { BaseLink } from 'react-router5';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index.es';
 import { useRoute } from 'react-router5';
 
-const NavItem = ({item:{link, color, icon, title, routeOptions: {reload}}}) => {
+const NavItem = ({visibility, item:{link, color, icon, title, routeOptions: {reload}}}) => {
 
   const {router} = useRoute();
-
+  const navItemClass = !visibility ? "navItem" : "navItem";
   return (
 
-    <li className="navItem">
+    <li className={navItemClass}>
       <BaseLink
         router={router}
         routeName={link}

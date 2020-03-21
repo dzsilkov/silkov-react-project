@@ -1,9 +1,20 @@
 .authStatus {
-  font-size: 1.2em;
-  font-weight: 700;
+  font-size: 1rem;
   padding: 1em;
-  color: tomato;
   height: 100%;
   display: flex;
   align-items: center;
 }
+
+.authStatusTitle{
+  font-weight: 700;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  margin-left: .6em;
+}
+
+.authStatusLink:hover {
+  color: rgba(255, 255, 255, 6);
+  transform: scale(1.1);
+}
+

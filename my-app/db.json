@@ -1,4 +1,31 @@
 {
+  "users": [
+    {
+      "firstName": "Denis",
+      "lastName": "Silkov",
+      "email": "dsilkov@yandex.ru",
+      "password": "11111",
+      "token": "Books_aMcHygA7S-hE-F2Ccdkh7",
+      "id": 1
+    },
+    {
+      "firstName": "john",
+      "lastName": "gfhjdy",
+      "email": "test@test.com",
+      "password": "11111",
+      "isLoggedIn": "",
+      "token": "Books_lWHDLwD7NTe6vr5epRyir",
+      "id": 2
+    },
+    {
+      "firstName": "Denis",
+      "lastName": "doe",
+      "email": "avd-alex@yavsex.ru",
+      "password": "22222",
+      "token": "Books_mEhnLP4fP8mELwoU53MxN",
+      "id": 3
+    }
+  ],
   "books": [
     {
       "title": "The Lord of the Rings",

@@ -1,10 +1,10 @@
 import React from 'react';
 import './FormFieldLabel.css';
 
-const FormFieldLabel = ({title, name}) => {
+const FormFieldLabel = ({title, name, styles}) => {
 
   return (
-    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+    <label className={styles}
            htmlFor={name}>
       <span>{title}</span>
     </label>

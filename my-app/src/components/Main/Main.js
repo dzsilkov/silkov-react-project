@@ -5,9 +5,9 @@ import BooksScreen from '../../containers/BooksScreen/BooksScreen';
 import BookDetail from '../BookDetails/BookDetail';
 import Library from '../Library/Library';
 import Settings from '../Settings/Settings';
-import Auth from '../Auth/Auth';
+import Auth from '../../containers/Auth/Auth';
 
-const Main = () => {
+const Main = ({authUser, isLoggedIn}) => {
   const {route} = useRouteNode('');
   const topRouteName = route.name.split('.')[0];
   const routeId = route.params.id;
@@ -23,9 +23,11 @@ const Main = () => {
   if (topRouteName === 'library') {
     return <Library/>;
   }
+
   if (topRouteName === 'auth') {
     return <Auth/>;
   }
+
   if (topRouteName === 'settings') {
     return <Settings/>;
   }

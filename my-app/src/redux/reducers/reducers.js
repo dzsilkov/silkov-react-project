@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import { reducers } from '../../containers/BooksScreen/reducers';
+import { bookReducers } from '../../containers/BooksScreen/reducers';
+import { authReducers } from '../../containers/Auth/reducers';
 
 export default combineReducers(
   {
-    books: reducers
+    books: bookReducers,
+    auth: authReducers,
   }
 );
 

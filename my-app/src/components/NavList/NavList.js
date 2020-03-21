@@ -2,11 +2,15 @@ import React from 'react';
 import NavItem from '../NavItem/NavItem';
 import './NavList.css';
 
-const NavList = ({menuItems}) => {
+const NavList = ({menuItems, isLoggedIn}) => {
 
   const menu = menuItems.map(item => {
     return (
-      <NavItem item={item} key={item.title}/>
+      <NavItem
+        item={item}
+        key={item.title}
+        visibility={isLoggedIn}
+      />
     );
   });
 

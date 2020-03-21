@@ -1,4 +1,4 @@
-export const validate = values => {
+export const validateSignUp = values => {
   const errors = {};
   if (!values.firstName) {
     errors.firstName = 'Required';
@@ -21,7 +21,7 @@ export const validate = values => {
   if (!values.password) {
     errors.password = 'Required';
   } else if (values.password.length < 5) {
-    errors.password = 'Password is not strong. Must be more then 5 characters';
+    errors.password = 'password must be more then 5 characters';
   }
   return errors;
 };

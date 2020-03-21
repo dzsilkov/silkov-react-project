@@ -11,7 +11,6 @@ const SettingsListItem = ({handlerHover, item: {id, status, title, active, link,
   const {router} = useRouteNode('settings');
   const statusText = status ? 'on' : 'off';
 
-
   return (
     <li className="settingsListItem"
         onMouseEnter={handlerHover.bind(null, id)}

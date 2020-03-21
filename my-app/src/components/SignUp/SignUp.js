@@ -1,12 +1,12 @@
 import React from 'react';
 import FormFieldInput from '../FormFieldInput/FormFieldInput';
 import { useFormik } from 'formik/dist/index';
-import { validate } from './../Auth/valdators';
+import { validateSignUp } from './validate';
 
 const SignUp = (props) => {
+  const {signUpUser, isLoggedIn, handleChangeLoggedIn} = props;
 
-
-  const form = useFormik(
+  const signUpForm = useFormik(
     {
       initialValues:
         {
@@ -15,9 +15,9 @@ const SignUp = (props) => {
           email: '',
           password: '',
         },
-      validate,
+      validateSignUp,
       onSubmit: values => {
-        alert(JSON.stringify(values, null, 2));
+        signUpUser(values);
       },
     });
 
@@ -29,18 +29,63 @@ const SignUp = (props) => {
       },
       touched,
       errors
-    } = form;
+    } = signUpForm;
 
+
+  const styles = {
+    firstNameStyles: {
+      label: 'lock uppercase tracking-wide text-gray-700 text-xs font-bold mb-2',
+      input: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500',
+      alert: 'text-red-600 text-xs italic',
+    },
+    lastNameStyles: {
+      label: 'lock uppercase tracking-wide text-gray-700 text-xs font-bold mb-2',
+      input: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500',
+      alert: 'text-red-600 text-xs italic',
+    },
+    emailStyles: {
+      label: 'lock uppercase tracking-wide text-gray-700 text-xs font-bold mb-2',
+      input: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500',
+      alert: 'text-red-600 text-xs italic',
+    },
+    passwordStyles: {
+      label: 'lock uppercase tracking-wide text-gray-700 text-xs font-bold mb-2',
+      input: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500',
+      alert: 'text-red-600 text-xs italic',
+    },
+    isLoggedInStyles: {
+      label: 'md:w-2/3 block text-gray-500 font-bold text-sm',
+      input: 'mr-2 leading-tight',
+      alert: '',
+    }
+  };
 
   return (
-    <div className="signUp">
-      <div className="w-full m-5 max-w-md bg-gray-800">
+    <div className="signUp mt-6">
+      <h2 className="mt-5 my-1 text-2xl md:text-center text-white"
+      >
+        Create your account
+      </h2>
+      <div className="w-full mx-5 mb-5 max-w-md bg-gray-800">
         <form className=" bg-white shadow-lg rounded px-8 py-8 pt-8"
               onSubmit={handleSubmit}
         >
+          <div className="flex flex-wrap -mx-3 m3-2">
+            <div className="w-full px-3">
+              <FormFieldInput
+                styles={styles.isLoggedInStyles}
+                title={'Already have an account?'}
+                name={'isLoggedIn'}
+                type={'checkbox'}
+                onChange={handleChangeLoggedIn}
+                value={isLoggedIn}
+              />
+            </div>
+          </div>
           <div className="flex flex-wrap -mx-3 mb-3">
             <div className="w-full px-3">
               <FormFieldInput
+                styles={styles.firstNameStyles}
                 title={'First Name'}
                 name={'firstName'}
                 type={'text'}
@@ -54,6 +99,8 @@ const SignUp = (props) => {
           <div className="flex flex-wrap -mx-3 mb-3">
             <div className="w-full px-3">
               <FormFieldInput
+                styles={styles.lastNameStyles}
+
                 title={'Last Name'}
                 name={'lastName'}
                 type={'text'}
@@ -66,8 +113,8 @@ const SignUp = (props) => {
           </div>
           <div className="flex flex-wrap -mx-3 mb-3">
             <div className="w-full px-3">
-
               <FormFieldInput
+                styles={styles.emailStyles}
                 title={'E-Mail'}
                 name={'email'}
                 type={'email'}
@@ -81,6 +128,7 @@ const SignUp = (props) => {
           <div className="flex flex-wrap -mx-3 mb-3">
             <div className="w-full px-3">
               <FormFieldInput
+                styles={styles.passwordStyles}
                 title={'Password'}
                 name={'password'}
                 type={'password'}
@@ -91,8 +139,8 @@ const SignUp = (props) => {
               />
             </div>
           </div>
-          <div className="md:flex md:items-center">
-            <div className="md:w-2/3">
+          <div className="flex flex-wrap justify-between items-center mx-1 m3-2">
+            <div className="md:w-1/3">
               <button
                 className="shadow bg-blue-500 hover:bg-blue-800 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                 type="submit"

@@ -6,7 +6,6 @@ import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import './FormFieldInput.css';
 
 const FormFieldInput = (props) => {
-
   const {
     id,
     title,
@@ -20,10 +19,15 @@ const FormFieldInput = (props) => {
     handleAction,
     onChange,
     onBlur,
-    errors
+    errors,
+
+    styles: {
+      label, input, alert
+    }
+
   } = props;
 
-  const img = !icon
+  const img = icon
     ? <span
       className="icon"
       onClick={handleAction}
@@ -33,15 +37,15 @@ const FormFieldInput = (props) => {
           </span>
     : null;
 
-
   return (
     <div className="formFieldInput">
       <FormFieldLabel
+        styles={label}
         name={name}
         title={title}
       />
       <input
-        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        className={input}
         placeholder={placeholder}
         id={name}
         type={type}
@@ -53,7 +57,7 @@ const FormFieldInput = (props) => {
         onBlur={onBlur}
       />
       {img}
-      <p className="text-red-600 text-xs italic">{errors}</p>
+      <p className={alert}>{errors}</p>
     </div>
   );
 };

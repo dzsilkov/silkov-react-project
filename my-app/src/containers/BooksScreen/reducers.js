@@ -28,7 +28,7 @@ const initialState = {
   booksPerPage: 5,
 };
 
-export const reducers = (state = initialState, action) => {
+export const bookReducers = (state = initialState, action) => {
 
   switch (action.type) {
 
