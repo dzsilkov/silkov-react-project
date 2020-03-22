@@ -16,7 +16,7 @@ const AccountDashBoard = ({signOutUser, authUser}) => {
         </span>
           <div className="w-full">
             <p className="font-bold text-md pl-2 mb-1">First Name:</p>
-            <p className="text-xl">{firstName}</p>
+            <p className="text-xl"><i>{firstName}</i></p>
           </div>
           <div className=""
           >
@@ -26,7 +26,7 @@ const AccountDashBoard = ({signOutUser, authUser}) => {
           <div className=""
           >
             <p className="font-bold text-md pl-2 mb-1">E-Mail:</p>
-            <p className="text-xl">{email}</p>
+            <p className="text-xl"><i>{email}</i></p>
           </div>
         </div>
 

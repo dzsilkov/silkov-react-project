@@ -47,6 +47,28 @@ export const signUpFailure = error => {
   };
 };
 
+export const SIGN_OUT_REQUEST = 'SIGN_OUT_REQUEST';
+export const signOutRequest = () => {
+  return {
+    type: SIGN_OUT_REQUEST,
+  };
+};
+
+export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
+export const signOutSuccess = () => {
+  return {
+    type: SIGN_OUT_SUCCESS,
+  };
+};
+
+export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE';
+export const signOutFailure = error => {
+  return {
+    type: SIGN_OUT_FAILURE,
+    payload: error,
+  };
+};
+
 export const AUTHENTICATE_USER_REQUEST = 'AUTHENTICATE_USER_REQUEST';
 export const authenticateUserRequest = () => {
   return {
@@ -66,28 +88,6 @@ export const AUTHENTICATE_USER_FAILURE = 'AUTHENTICATE_USER_FAILURE';
 export const authenticateUserFailure = error => {
   return {
     type: AUTHENTICATE_USER_FAILURE,
-    payload: error,
-  };
-};
-
-export const SIGN_OUT_REQUEST = 'SIGN_OUT_REQUEST';
-export const signOutRequest = () => {
-  return {
-    type: SIGN_OUT_REQUEST,
-  };
-};
-
-export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
-export const signOutSuccess = () => {
-  return {
-    type: SIGN_OUT_SUCCESS,
-  };
-};
-
-export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE';
-export const signOutFailure = error => {
-  return {
-    type: SIGN_OUT_FAILURE,
     payload: error,
   };
 };
@@ -138,7 +138,6 @@ export const signUpUser = (user) => {
       });
   };
 };
-
 
 export const authenticateUser = () => {
   return dispatch => {

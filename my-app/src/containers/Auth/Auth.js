@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 
 import SignUp from '../../components/SignUp/SignUp';
 import SignIn from '../../components/SignIn/SignIn';
-import { getAuthUser } from './selectors';
+import {
+  getAuthUser,
+} from './selectors';
+
 import AccountDashBoard from '../../components/AcoountDashBoard/AccountDashBoard';
 
 
@@ -49,6 +52,9 @@ class Auth extends React.Component {
             <AccountDashBoard
               signOutUser={signOutUser}
               authUser={authUser}
+              // userBooks={userBooks}
+              // userFavoriteBooks={userFavoriteBooks}
+              // userReadBooks={userReadBooks}
             />
             :
             authForm

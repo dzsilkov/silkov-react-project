@@ -15,8 +15,11 @@ import {
 
 export const initialState = {
   authUser: null,
-  idToken: null,
   error: null,
+  userBooks: {
+    userReadBooks: {},
+    userFavoriteBooks: {},
+  }
 };
 
 export const authReducers = (state = initialState, action) => {
@@ -66,7 +69,9 @@ export const authReducers = (state = initialState, action) => {
       return {
         ...state,
         authUser: action.payload,
-        idToken: action.payload.token,
+        userBooks: action.payload.books,
+        userReadBooks: action.payload.books.readBooks,
+        userFavoriteBooks: action.payload.books.favoriteBooks,
         error: null,
       };
 
@@ -86,7 +91,6 @@ export const authReducers = (state = initialState, action) => {
       return {
         ...state,
         authUser: null,
-        idToken: null,
         error: null,
       };
 
