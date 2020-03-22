@@ -1,7 +1,7 @@
 import React from 'react';
 import './LibraryListItem.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook, faHeart, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faHeart, faMinusCircle, faBookDead } from '@fortawesome/free-solid-svg-icons';
 
 
 function LibraryListItem({handlerToggle, item: {artist, track, id, favourite, listened}}) {
@@ -34,7 +34,7 @@ function LibraryListItem({handlerToggle, item: {artist, track, id, favourite, li
           className="actionRemove"
           // onClick={handlerToggle.bind(null, id, 'favourite')}
         >
-        <FontAwesomeIcon color={removeColor} size="2x" icon={faMinusCircle}/>
+        <FontAwesomeIcon color={removeColor} size="2x" icon={faBookDead}/>
       </span>
       </div>
     </li>

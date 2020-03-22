@@ -1,9 +1,12 @@
 .logo {
-  font-size: 1.2em;
+  font-size: 1rem;
   font-weight: 700;
-  padding: 1em;
-  color: tomato;
-  height: 100%;
-  display: flex;
-  align-items: center;
+  color: rgba(255, 255, 255, .9);
+  padding: 1em 0 0;
+  cursor: pointer;
+}
+
+.logo:hover {
+  color: rgba(255, 255, 255, .5);
+  transform: scale(1.1);
 }

@@ -3,27 +3,38 @@
     {
       "firstName": "Denis",
       "lastName": "Silkov",
-      "email": "dsilkov@yandex.ru",
-      "password": "11111",
-      "token": "Books_aMcHygA7S-hE-F2Ccdkh7",
-      "id": 1
-    },
-    {
-      "firstName": "john",
-      "lastName": "gfhjdy",
       "email": "test@test.com",
-      "password": "11111",
-      "isLoggedIn": "",
-      "token": "Books_lWHDLwD7NTe6vr5epRyir",
-      "id": 2
+      "password": "00000",
+      "books": {
+        "readBooks": {},
+        "favoriteBooks": {}
+      },
+      "token": "Books_hbR6o-nzvBb7rzaVIChrF",
+      "id": 5
     },
     {
       "firstName": "Denis",
-      "lastName": "doe",
+      "lastName": "Silkov",
+      "email": "dsilkov@yandex.ru",
+      "password": "55555",
+      "books": {
+        "readBooks": {},
+        "favoriteBooks": {}
+      },
+      "token": "Books_UAxI2ynynHUlaAK49kFp3",
+      "id": 6
+    },
+    {
+      "firstName": "john",
+      "lastName": "Silkov",
       "email": "avd-alex@yavsex.ru",
-      "password": "22222",
-      "token": "Books_mEhnLP4fP8mELwoU53MxN",
-      "id": 3
+      "password": "fgasfrg",
+      "books": {
+        "readBooks": {},
+        "favoriteBooks": {}
+      },
+      "token": "Books_2GhzmV1DnqGS1m667LDQl",
+      "id": 7
     }
   ],
   "books": [

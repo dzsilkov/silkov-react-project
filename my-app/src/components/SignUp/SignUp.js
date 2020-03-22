@@ -14,6 +14,10 @@ const SignUp = (props) => {
           lastName: '',
           email: '',
           password: '',
+          books: {
+            readBooks: {},
+            favoriteBooks: {}
+          }
         },
       validateSignUp,
       onSubmit: values => {

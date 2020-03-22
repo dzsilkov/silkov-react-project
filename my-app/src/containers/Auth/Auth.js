@@ -1,5 +1,5 @@
 import React from 'react';
-import { signUpUser, signInUser } from './actions';
+import { signUpUser, signInUser, signOutUser } from './actions';
 import { connect } from 'react-redux';
 
 import SignUp from '../../components/SignUp/SignUp';
@@ -29,7 +29,7 @@ class Auth extends React.Component {
 
   render() {
     const {isLoggedIn} = this.state;
-    const {signUpUser, signInUser, authUser} = this.props;
+    const {signUpUser, signInUser, authUser, signOutUser} = this.props;
 
     const authForm = isLoggedIn
       ? <SignIn
@@ -44,9 +44,12 @@ class Auth extends React.Component {
     return (
       <div className="auth">
         {
-          !authUser
+          authUser
             ?
-            <AccountDashBoard authUser={authUser}/>
+            <AccountDashBoard
+              signOutUser={signOutUser}
+              authUser={authUser}
+            />
             :
             authForm
         }
@@ -66,5 +69,6 @@ export default connect(
   {
     signUpUser,
     signInUser,
+    signOutUser
   }
 )(Auth);

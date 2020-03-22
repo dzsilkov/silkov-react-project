@@ -1,4 +1,5 @@
 import { usersApi } from '../../api/usersApi/usersApi';
+import { authUsers } from '../../api/usersApi/authUsers';
 
 
 export const SIGN_IN_REQUEST = 'SIGN_IN_REQUEST';
@@ -69,57 +70,92 @@ export const authenticateUserFailure = error => {
   };
 };
 
-export const SIGN_OUT = 'SIGN_OUT';
-
-export function signOut() {
+export const SIGN_OUT_REQUEST = 'SIGN_OUT_REQUEST';
+export const signOutRequest = () => {
   return {
-    type: SIGN_OUT,
+    type: SIGN_OUT_REQUEST,
   };
-}
+};
 
-export const SIGN_IN = 'SIGN_IN';
+export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
+export const signOutSuccess = () => {
+  return {
+    type: SIGN_OUT_SUCCESS,
+  };
+};
 
-export function signIn() {
-}
+export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE';
+export const signOutFailure = error => {
+  return {
+    type: SIGN_OUT_FAILURE,
+    payload: error,
+  };
+};
+
+export const signOutUser = () => {
+  return dispatch => {
+    dispatch(signOutRequest());
+    usersApi.signOutUser()
+      .then(() => {
+        dispatch(signOutSuccess());
+      })
+      .catch(error => {
+        dispatch(signOutFailure(error));
+      });
+  };
+};
 
 export const signInUser = (user) => {
   return dispatch => {
     dispatch(signInRequest());
-    usersApi.getUser(user)
+    usersApi.signInUser(user)
       .then(res => {
-        dispatch(signInSuccess(res));
+        if (typeof res !== 'string' && res.token) {
+          dispatch(authenticateUser());
+        } else {
+          dispatch(signInFailure(res));
+        }
       })
       .catch(error => {
-        signInFailure(error);
+        dispatch(signInFailure(error));
       });
   };
 };
-
-export const authenticateUser = () => {
-  return dispatch => {
-    dispatch(authenticateUserRequest());
-    usersApi.getAuthenticate()
-      .then(res => {
-        dispatch(authenticateUserSuccess(res));
-      })
-      .catch(error => {
-        authenticateUserFailure(error);
-      })
-  }
-};
-
-
 
 export const signUpUser = (user) => {
   return dispatch => {
     dispatch(signUpRequest());
-    usersApi.postUser(user)
+    usersApi.signUpUser(user)
       .then(res => {
-        console.log(res);
-        dispatch(signUpSuccess(res));
+        if (typeof res !== 'string' && res.token) {
+          dispatch(authenticateUser());
+        } else {
+          dispatch(signUpFailure(res));
+        }
       })
       .catch(error => {
-        signUpFailure(error);
+        dispatch(signUpFailure(error));
       });
   };
 };
+
+
+export const authenticateUser = () => {
+  return dispatch => {
+    dispatch(authenticateUserRequest());
+    authUsers.getAuthenticate()
+      .then(res => {
+        if (typeof res !== 'string') {
+          dispatch(authenticateUserSuccess(res));
+        } else {
+          dispatch(authenticateUserFailure(res));
+        }
+      })
+      .catch(error => {
+        dispatch(authenticateUserFailure(error));
+      });
+  };
+};
+
+
+

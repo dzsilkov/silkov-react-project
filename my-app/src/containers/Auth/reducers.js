@@ -5,7 +5,9 @@ import {
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
-  SIGN_OUT,
+  SIGN_OUT_REQUEST,
+  SIGN_OUT_SUCCESS,
+  SIGN_OUT_FAILURE,
   AUTHENTICATE_USER_REQUEST,
   AUTHENTICATE_USER_SUCCESS,
   AUTHENTICATE_USER_FAILURE
@@ -75,8 +77,26 @@ export const authReducers = (state = initialState, action) => {
       };
 
 
-    case SIGN_OUT:
-      return initialState;
+    case SIGN_OUT_REQUEST:
+      return {
+        ...state,
+      };
+
+    case SIGN_OUT_SUCCESS:
+      return {
+        ...state,
+        authUser: null,
+        idToken: null,
+        error: null,
+      };
+
+    case SIGN_OUT_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
+
+
     default:
       return state;
   }

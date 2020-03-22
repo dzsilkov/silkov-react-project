@@ -1,20 +1,29 @@
 import axios from 'axios/index';
+import { getToken } from './utils';
+import {
+  USERS_AUTH_BASE_ADDRESS,
+  USERS_AUTH_ENDPOINT,
+  LOCAL_STORAGE_KEY,
+} from './constants';
 
-export const USERS_API_BASE_ADDRESS = 'http://localhost:3001';
-export const USERS_ENDPOINT = 'users';
 
-const localStorageKey = '__books_token__';
-
-export const getToken = () => {
-  return window.localStorage.getItem(localStorageKey);
-};
-
-export const getAuth = () => {
-  const token = getToken();
-  if (token) {
-    return axios.get(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/?q=${token}`)
-      .then(res => {
-        console.log(res);
-      });
-  }
+export const authUsers = {
+  getAuthenticate() {
+    const token = getToken(LOCAL_STORAGE_KEY);
+    if (token) {
+      return axios.get(`${USERS_AUTH_BASE_ADDRESS}/${USERS_AUTH_ENDPOINT}/?q=${token}`)
+        .then(({data}) => {
+          if (data.length !== 0) {
+            const user = data.find(item => token === item.token);
+            const {password, ...resUser} = user;
+            return resUser;
+          } else {
+            return Promise.resolve('User not found');
+          }
+        });
+    }
+    else {
+      return Promise.resolve(null);
+    }
+  },
 };
