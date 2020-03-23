@@ -4,6 +4,8 @@ import {
   setCurrentPage,
   setBooksPerPage
 } from './actions';
+
+import {addBookToLibrary} from './../Auth/actions'
 import { connect } from 'react-redux';
 import { getBooks, getBooksPerPage, getTotalBooks, getCurrentPage, getSelectedBook } from './selectors';
 
@@ -24,6 +26,7 @@ export default connect(
     fetchBooks,
     fetchBookById,
     setCurrentPage,
-    setBooksPerPage
+    setBooksPerPage,
+    addBookToLibrary
   }
 )(Books);

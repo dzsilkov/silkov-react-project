@@ -4,18 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faHeart, faMinusCircle, faBookDead } from '@fortawesome/free-solid-svg-icons';
 
 
-function LibraryListItem({handlerToggle, item: {artist, track, id, favourite, listened}}) {
+function LibraryListItem({handlerToggle, item: {author, title, id, favourite, read}}) {
 
   const favouriteColor = favourite ? '#ff6347' : '#b8948e';
-  const listenedColor = listened ? '#1ad64d' : '#978863';
-  const removeColor = listened ? '#1ad64d' : '#978863';
+  const listenedColor = read ? '#1ad64d' : '#978863';
+  const removeColor = read ? '#1ad64d' : '#978863';
 
 
   return (
     <li className="libraryListItem">
       <div className="libraryListItemHeader">
-        <h4>{artist}</h4>
-        <p>{track}</p>
+        <h4>{author}</h4>
+        <p>{title}</p>
       </div>
       <div className="libraryListItemActions">
         <span
@@ -26,7 +26,7 @@ function LibraryListItem({handlerToggle, item: {artist, track, id, favourite, li
       </span>
         <span
           className="actionListened"
-          onClick={handlerToggle.bind(null, id, 'listened')}
+          onClick={handlerToggle.bind(null, id, 'read')}
         >
         <FontAwesomeIcon color={listenedColor} size="2x" icon={faBook}/>
       </span>

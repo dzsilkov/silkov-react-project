@@ -19,7 +19,7 @@ export const usersApi = {
   },
 
   signUpUser(user) {
-    return this.isEmailInUse(user.email)
+    return axios.get(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/?q=${user.email}`)
       .then(({data}) => {
         const forbiddenEmail = data.some(item => item.email === user.email);
         if (!forbiddenEmail) {
@@ -37,13 +37,6 @@ export const usersApi = {
       });
   },
 
-  isEmailInUse(email) {
-    return axios.get(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/?q=${email}`)
-      .then(
-
-      );
-  },
-
   signInUser({email, password}) {
     return axios.get(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/?q=${email}`)
       .then(({data}) => {
@@ -58,11 +51,22 @@ export const usersApi = {
       });
   },
 
-  updateUser(userId, user) {
-    return axios.put(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`, user);
+  updateUser(userId, data) {
+    return axios.get(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`)
+      .then(res => {
+          console.log(res.data.books)
+        return axios.patch(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`, {books: [...res.data.books, data]} )
+
+        }
+      )
   },
 
   deleteUser(userId) {
-    return axios.delete(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`);
-  }
+    return axios.delete(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}:books`);
+  },
+
+
+
 };
+
+

@@ -6,6 +6,7 @@ import BookDetail from '../BookDetails/BookDetail';
 import Library from '../Library/Library';
 import Settings from '../Settings/Settings';
 import Auth from '../../containers/Auth/Auth';
+import LibraryScreen from '../../containers/LibraryScreen/LibraryScreen';
 
 const Main = ({authUser, isLoggedIn}) => {
   const {route} = useRouteNode('');
@@ -21,7 +22,7 @@ const Main = ({authUser, isLoggedIn}) => {
   }
 
   if (topRouteName === 'library') {
-    return <Library/>;
+    return <LibraryScreen/>;
   }
 
   if (topRouteName === 'auth') {

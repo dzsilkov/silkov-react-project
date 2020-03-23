@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import SignUp from '../../components/SignUp/SignUp';
 import SignIn from '../../components/SignIn/SignIn';
 import {
-  getAuthUser,
+  getActiveUser,
 } from './selectors';
 
 import AccountDashBoard from '../../components/AcoountDashBoard/AccountDashBoard';
@@ -32,7 +32,7 @@ class Auth extends React.Component {
 
   render() {
     const {isLoggedIn} = this.state;
-    const {signUpUser, signInUser, authUser, signOutUser} = this.props;
+    const {signUpUser, signInUser, activeUser, signOutUser} = this.props;
 
     const authForm = isLoggedIn
       ? <SignIn
@@ -47,11 +47,11 @@ class Auth extends React.Component {
     return (
       <div className="auth">
         {
-          authUser
+          activeUser
             ?
             <AccountDashBoard
               signOutUser={signOutUser}
-              authUser={authUser}
+              activeUser={activeUser}
               // userBooks={userBooks}
               // userFavoriteBooks={userFavoriteBooks}
               // userReadBooks={userReadBooks}
@@ -66,8 +66,8 @@ class Auth extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const authUser = getAuthUser(state);
-  return {authUser};
+  const activeUser = getActiveUser(state);
+  return {activeUser};
 };
 
 export default connect(

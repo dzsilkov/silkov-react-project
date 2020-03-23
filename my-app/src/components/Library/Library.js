@@ -73,11 +73,9 @@ class Library extends React.Component {
   }
 
   componentDidMount() {
-    this.setState(prevState => {
-      return {
-        books: [...prevState.books, ...books],
-      };
-    });
+    const {activeUser, userBooksIds, userReadBooksIds, userFavouriteBooksIds, fetchUserBooks} = this.props;
+    console.log(userBooksIds)
+    fetchUserBooks(userBooksIds);
   }
 
   handlePlaylistToggle(id, prop) {
@@ -95,15 +93,16 @@ class Library extends React.Component {
 
   render() {
 
-    const {books} = this.state;
-    const favoriteCollection = books.filter(item => item.favourite);
-    const listenedCollection = books.filter(item => item.listened);
-
+    const {
+      userBooks,
+      userFavouriteBooks,
+      userReadBooks
+    } = this.props;
     return (
       <section className="library">
-        <LibraryList title={'My Books'} collection={books} handlerToggle={this.handlePlaylistToggle}/>
-        <LibraryList title={'Read Books'} collection={listenedCollection} handlerToggle={this.handlePlaylistToggle}/>
-        <LibraryList title={'Favourite Books'} collection={favoriteCollection} handlerToggle={this.handlePlaylistToggle}/>
+        <LibraryList key={'1'} title={'My Books'} collection={userBooks} handlerToggle={this.handlePlaylistToggle}/>
+        <LibraryList key={'2'} title={'Read Books'} collection={userReadBooks} handlerToggle={this.handlePlaylistToggle}/>
+        <LibraryList key={'3'} title={'Favourite Books'} collection={userFavouriteBooks} handlerToggle={this.handlePlaylistToggle}/>
       </section>
     );
   }

@@ -5,36 +5,60 @@
       "lastName": "Silkov",
       "email": "test@test.com",
       "password": "00000",
-      "books": {
-        "readBooks": {},
-        "favoriteBooks": {}
-      },
+      "books": [
+        {
+          "id": "618645616",
+          "read": false,
+          "favourite": false
+        },
+        {
+          "id": "439136369",
+          "read": true,
+          "favourite": false
+        },
+        {
+          "id": "439064872",
+          "read": false,
+          "favourite": true
+        },
+        {
+          "id": "545139708",
+          "read": true,
+          "favourite": true
+        },
+        {
+          "id": "1250166535",
+          "read": false,
+          "favourite": false
+        }
+      ],
       "token": "Books_hbR6o-nzvBb7rzaVIChrF",
       "id": 5
     },
     {
-      "firstName": "Denis",
-      "lastName": "Silkov",
-      "email": "dsilkov@yandex.ru",
-      "password": "55555",
-      "books": {
-        "readBooks": {},
-        "favoriteBooks": {}
-      },
-      "token": "Books_UAxI2ynynHUlaAK49kFp3",
-      "id": 6
-    },
-    {
       "firstName": "john",
-      "lastName": "Silkov",
-      "email": "avd-alex@yavsex.ru",
-      "password": "fgasfrg",
-      "books": {
-        "readBooks": {},
-        "favoriteBooks": {}
-      },
-      "token": "Books_2GhzmV1DnqGS1m667LDQl",
-      "id": 7
+      "lastName": "doe",
+      "email": "dsilkov@yandex.ru",
+      "password": "11111",
+      "books": [
+        {
+          "id": "439136369",
+          "read": false,
+          "favourite": false
+        },
+        {
+          "id": "439064872",
+          "read": false,
+          "favourite": false
+        },
+        {
+          "id": "439136369",
+          "read": false,
+          "favourite": false
+        }
+      ],
+      "token": "Books_21xCP_uOvpEZWRJOn6gJc",
+      "id": 6
     }
   ],
   "books": [

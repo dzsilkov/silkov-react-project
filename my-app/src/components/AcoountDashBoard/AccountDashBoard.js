@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index.es';
 import { faUserAlt, faUserNinja, faUserTie } from '@fortawesome/free-solid-svg-icons';
 
 
-const AccountDashBoard = ({signOutUser, authUser}) => {
+const AccountDashBoard = ({signOutUser, activeUser}) => {
 
-  const {firstName, lastName, email} = authUser;
+  const {firstName, lastName, email} = activeUser;
 
   return (
     <div>
