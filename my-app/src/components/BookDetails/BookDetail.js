@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import { faPlusCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index.es';
 import { fetchBookById } from '../../containers/BooksScreen/actions';
-import { fetchAddUserBook } from './../../containers/Auth/actions';
 import { getSelectedBook } from '../../containers/BooksScreen/selectors';
-import { getAuthUserId } from '../../containers/Auth/selectors';
 import './BookDetail.css';
+import { addBookToLibrary } from '../../containers/LibraryScreen/actions';
 
 
 class BookDetail extends React.Component {
@@ -22,8 +21,7 @@ class BookDetail extends React.Component {
 
   render() {
     const {
-      fetchAddUserBook,
-      userId,
+      addBookToLibrary,
       selectedBook:
         {
           title,
@@ -51,7 +49,7 @@ class BookDetail extends React.Component {
               <span className="bookPageCount"><i>Pages: {pageCount}</i></span>
             </div>
             <div className="bookActions"
-                 onClick={() => fetchAddUserBook(userId, id)}>
+                 onClick={() => addBookToLibrary(id)}>
               <span className="actionBookButton">
               <FontAwesomeIcon size="2x" color={'#96C178'} icon={icon}/>
             </span></div>
@@ -65,14 +63,13 @@ class BookDetail extends React.Component {
 
 const mapStateToProps = state => {
   const selectedBook = getSelectedBook(state);
-  const userId = getAuthUserId(state);
-  return {selectedBook, userId};
+  return {selectedBook};
 };
 
 export default connect(
   mapStateToProps,
   {
     fetchBookById,
-    fetchAddUserBook,
+    addBookToLibrary,
   }
 )(BookDetail);

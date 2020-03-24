@@ -4,8 +4,8 @@ import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import { connect } from 'react-redux';
-import { authenticateUser } from '../../containers/Auth/actions';
-import { getActiveUser, getIsLoggedIn } from '../../containers/Auth/selectors';
+import { getAuth } from '../../redux/actions/auth';
+import { getActiveUser } from '../../redux/selectors/selectors';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,25 +13,23 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const {authenticateUser} = this.props;
-    authenticateUser();
+    const {getAuth} = this.props;
+    getAuth();
   }
 
   render() {
-    const {activeUser, isLoggedIn} = this.props;
+    const {activeUser} = this.props;
 
     return (
       <div className="wrapper">
         <header>
           <NavBar
-            isLoggedIn={isLoggedIn}
-            authUser={activeUser}
+            activeUser={activeUser}
           />
         </header>
         <main>
           <Main
-            authUser={activeUser}
-            isLoggedIn={isLoggedIn}
+            activeUser={activeUser}
           />
         </main>
         <footer>
@@ -45,13 +43,12 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   const activeUser = getActiveUser(state);
-  const isLoggedIn = getIsLoggedIn(state);
-  return {activeUser, isLoggedIn};
+  return {activeUser};
 };
 
 export default connect(
   mapStateToProps,
   {
-    authenticateUser
+    getAuth
   }
 )(App);

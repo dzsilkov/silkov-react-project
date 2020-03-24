@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index.es';
 import { faUserAlt, faUserNinja } from '@fortawesome/free-solid-svg-icons';
 import { useRoute } from 'react-router5';
 
-const AuthStatus = ({authUser}) => {
+const AuthStatus = ({activeUser}) => {
 
   const {router} = useRoute();
 
-const name = authUser ? authUser.firstName : 'Guest';
-const icon = authUser ? faUserAlt : faUserNinja;
-const iconColor = authUser ? '#1ad64d' : '#ffffff';
+const name = activeUser.firstName ? activeUser.firstName : 'Guest';
+const icon = activeUser.firstName ? faUserAlt : faUserNinja;
+const iconColor = activeUser.firstName ? '#1ad64d' : '#ffffff';
 
   return (
     <div className="authStatus">

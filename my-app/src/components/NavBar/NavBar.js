@@ -5,12 +5,12 @@ import Nav from '../Nav/Nav';
 import AuthStatus from '../AuthStatus/AuthStatus';
 
 
-const NavBar = ({authUser, isLoggedIn}) => {
+const NavBar = ({activeUser}) => {
   return (
     <div className="navBar">
       <Logo/>
-      <Nav isLoggedIn={isLoggedIn}/>
-      <AuthStatus authUser={authUser}/>
+      <Nav activeUser={activeUser}/>
+      <AuthStatus activeUser={activeUser}/>
     </div>
   );
 };

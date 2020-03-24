@@ -2,17 +2,30 @@ import {
   AUTHENTICATE_USER_REQUEST,
   AUTHENTICATE_USER_SUCCESS,
   AUTHENTICATE_USER_FAILURE,
+  SIGN_IN_REQUEST,
+  SIGN_IN_SUCCESS,
+  SIGN_IN_FAILURE,
+  SIGN_UP_REQUEST,
+  SIGN_UP_SUCCESS,
+  SIGN_UP_FAILURE,
+  SIGN_OUT_REQUEST,
+  SIGN_OUT_SUCCESS,
+  SIGN_OUT_FAILURE,
+  SET_ACTIVE_USER,
+  UPDATE_ACTIVE_USER_BOOKS
 } from './actions';
 
+
 export const initialState = {
-  authUserId: null,
-  authUserToken: null,
-  authUser: null,
+  userId: null,
+  firstName: null,
+  lastName: null,
+  email: null,
+  userBooks: [],
   userBooksIds: [],
-  userReadBooksIds: [],
-  userFavouriteBooksIds: [],
   error: null,
 };
+
 
 export const userReducers = (state = initialState, action) => {
   switch (action.type) {
@@ -20,27 +33,97 @@ export const userReducers = (state = initialState, action) => {
     case AUTHENTICATE_USER_REQUEST:
       return {
         ...state,
+        error: null
       };
 
-    case AUTHENTICATE_USER_SUCCESS:
-      const {id, token, books, } = action.payload;
+    case SET_ACTIVE_USER:
+      const {id, firstName, lastName, email, books, userBooksIds} = action.payload;
       return {
         ...state,
-        authUserId: id,
-        authUserToken: token,
-        authUser: action.payload,
-        userBooksIds: [...books.map(book => book.id)],
-        userReadBooksIds: [...books.filter(book => book.read).map(book => book.id)],
-        userFavouriteBooksIds: [...books.filter(book => book.favourite).map(book => book.id)],
+        userId: id,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        userBooks: [...books],
+        userBooksIds: [...userBooksIds],
         error: null,
       };
+
 
     case AUTHENTICATE_USER_FAILURE:
       return {
         ...state,
         error: action.payload
       };
+
+    case UPDATE_ACTIVE_USER_BOOKS: {
+      return {
+        ...state,
+        userBooks: [...action.payload.books],
+        userBooksIds: [...action.payload.userBooksIds],
+      };
+    }
+
+    case SIGN_IN_REQUEST:
+      return {
+        ...state,
+      };
+
+    case SIGN_IN_SUCCESS:
+
+      return {
+        ...state,
+      };
+
+    case SIGN_IN_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
+
+    case SIGN_UP_REQUEST:
+      return {
+        ...state,
+      };
+
+    case SIGN_UP_SUCCESS:
+      const authUser = action.payload;
+      return {
+        ...state,
+        authUser: authUser
+      };
+
+    case SIGN_UP_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
+
+    case SIGN_OUT_REQUEST:
+      return {
+        ...state,
+      };
+
+    case SIGN_OUT_SUCCESS:
+      return {
+        ...state,
+        userId: null,
+        firstName: null,
+        lastName: null,
+        email: null,
+        userBooks: [],
+        userBooksIds: [],
+        error: null,
+      };
+
+    case SIGN_OUT_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
+
     default:
       return state;
   }
+
 };

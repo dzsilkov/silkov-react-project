@@ -3,7 +3,7 @@ import { faCog, faSearch, faUserAlt, faUserNinja, faHome, faBookOpen } from '@fo
 import './Nav.css';
 import NavList from '../NavList/NavList';
 
-function Nav({isLoggedIn}) {
+function Nav({activeUser}) {
 
   const navItems = [
     {
@@ -38,12 +38,11 @@ function Nav({isLoggedIn}) {
     },
   ];
 
-
   return (
     <nav className="nav">
       <NavList
         menuItems={navItems}
-        isLoggedIn={isLoggedIn}
+        isLoggedIn={activeUser}
       />
     </nav>
   );

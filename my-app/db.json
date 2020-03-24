@@ -7,29 +7,24 @@
       "password": "00000",
       "books": [
         {
-          "id": "618645616",
+          "id": "140268863",
           "read": true,
           "favourite": true
         },
         {
-          "id": "439136369",
-          "read": true,
+          "id": "1491989149",
+          "read": false,
           "favourite": true
         },
         {
-          "id": "439064872",
+          "id": "64404994",
           "read": true,
-          "favourite": true
+          "favourite": false
         },
         {
-          "id": "545139708",
-          "read": true,
-          "favourite": true
-        },
-        {
-          "id": "1250166535",
-          "read": true,
-          "favourite": true
+          "id": "399589104",
+          "read": false,
+          "favourite": false
         }
       ],
       "token": "Books_hbR6o-nzvBb7rzaVIChrF",
@@ -48,11 +43,16 @@
         },
         {
           "id": "439064872",
+          "read": true,
+          "favourite": true
+        },
+        {
+          "id": "439136369",
           "read": false,
           "favourite": false
         },
         {
-          "id": "439136369",
+          "id": "62312189",
           "read": false,
           "favourite": false
         }

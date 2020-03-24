@@ -14,10 +14,6 @@ export const usersApi = {
     return axios.get(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}`);
   },
 
-  signOutUser() {
-    return removeToken(LOCAL_STORAGE_KEY);
-  },
-
   signUpUser(user) {
     return axios.get(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/?q=${user.email}`)
       .then(({data}) => {
@@ -29,7 +25,7 @@ export const usersApi = {
             .then(({data}) => {
               const token = data.token;
               setToken(LOCAL_STORAGE_KEY, token);
-              return {token: {token}};
+              return {token: token};
             });
         } else {
           return Promise.resolve('E-mail is already in use');
@@ -44,7 +40,7 @@ export const usersApi = {
         if (user) {
           const {token, ...rest} = user;
           setToken(LOCAL_STORAGE_KEY, token);
-          return {token: {token}};
+          return {token};
         } else {
           return Promise.resolve('password is not correct');
         }
@@ -53,25 +49,15 @@ export const usersApi = {
 
   updateUserBooks(userId, data) {
     return axios.patch(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`, {books: [...data]})
-
-    // return axios.get(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`)
-    //   .then(res => {
-    //       console.log(res.data.books)
-    //     return axios.patch(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`, {books: [...res.data.books, data]} )
-    //     }
-    //   )
   },
 
   getUserData(userId) {
     return axios.get(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`)
   },
 
-  deleteUser(userId) {
-    return axios.delete(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}:books`);
+  deleteUserBook(userId, data) {
+    return axios.patch(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`, {books: [...data]});
   },
-
-
-
 };
 
 

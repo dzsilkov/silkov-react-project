@@ -1,14 +1,11 @@
 import React from 'react';
-import { signUpUser, signInUser, signOutUser } from './actions';
-import { connect } from 'react-redux';
 
+import { connect } from 'react-redux';
+import { signUpUser, signInUser, signOutUser } from './../User/actions';
 import SignUp from '../../components/SignUp/SignUp';
 import SignIn from '../../components/SignIn/SignIn';
-import {
-  getActiveUser,
-} from './selectors';
-
 import AccountDashBoard from '../../components/AcoountDashBoard/AccountDashBoard';
+import { getActiveUser, getAuthUserToken } from '../../redux/selectors/selectors';
 
 
 class Auth extends React.Component {
@@ -32,7 +29,7 @@ class Auth extends React.Component {
 
   render() {
     const {isLoggedIn} = this.state;
-    const {signUpUser, signInUser, activeUser, signOutUser} = this.props;
+    const {signUpUser, signInUser, activeUser, signOutUser, authUserToken} = this.props;
 
     const authForm = isLoggedIn
       ? <SignIn
@@ -47,7 +44,7 @@ class Auth extends React.Component {
     return (
       <div className="auth">
         {
-          activeUser
+          authUserToken
             ?
             <AccountDashBoard
               signOutUser={signOutUser}
@@ -67,7 +64,8 @@ class Auth extends React.Component {
 
 const mapStateToProps = state => {
   const activeUser = getActiveUser(state);
-  return {activeUser};
+  const authUserToken = getAuthUserToken(state);
+  return {activeUser, authUserToken};
 };
 
 export default connect(

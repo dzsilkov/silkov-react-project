@@ -22,7 +22,7 @@
 }
 
 .actionFavourite,
-.actionListened,
+.actionRead,
 .actionRemove {
   padding-left: .8em;
   cursor: pointer;

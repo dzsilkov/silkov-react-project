@@ -5,7 +5,7 @@ import {
   setBooksPerPage
 } from './actions';
 
-import {addBookToLibrary} from './../Auth/actions'
+import {addBookToLibrary} from './../LibraryScreen/actions'
 import { connect } from 'react-redux';
 import { getBooks, getBooksPerPage, getTotalBooks, getCurrentPage, getSelectedBook } from './selectors';
 
