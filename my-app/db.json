@@ -8,17 +8,17 @@
       "books": [
         {
           "id": "618645616",
-          "read": false,
-          "favourite": false
+          "read": true,
+          "favourite": true
         },
         {
           "id": "439136369",
           "read": true,
-          "favourite": false
+          "favourite": true
         },
         {
           "id": "439064872",
-          "read": false,
+          "read": true,
           "favourite": true
         },
         {
@@ -28,8 +28,8 @@
         },
         {
           "id": "1250166535",
-          "read": false,
-          "favourite": false
+          "read": true,
+          "favourite": true
         }
       ],
       "token": "Books_hbR6o-nzvBb7rzaVIChrF",

@@ -32,7 +32,7 @@ function LibraryListItem({handlerToggle, item: {author, title, id, favourite, re
       </span>
         <span
           className="actionRemove"
-          // onClick={handlerToggle.bind(null, id, 'favourite')}
+          onClick={handlerToggle.bind(null, id, 'favourite')}
         >
         <FontAwesomeIcon color={removeColor} size="2x" icon={faBookDead}/>
       </span>

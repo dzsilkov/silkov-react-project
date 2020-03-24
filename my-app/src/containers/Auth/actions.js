@@ -151,7 +151,13 @@ export const fetchAddUserBookFailure = error => {
   };
 };
 
-
+export const UPDATE_ACTIVE_USER_BOOKS = 'UPDATE_ACTIVE_USER_BOOKS';
+export const updateActiveUserBooks = books => {
+  return {
+    type: UPDATE_ACTIVE_USER_BOOKS,
+    payload: books,
+  };
+};
 
 
 export const fetchAddUserBook = (userId, data) => {

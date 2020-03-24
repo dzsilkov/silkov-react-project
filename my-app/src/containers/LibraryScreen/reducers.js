@@ -27,30 +27,10 @@ const initialState = {
   libraryBooks: [],
   userReadBooks: [],
   userFavouriteBooks: [],
-
 };
 
 export const libraryReducers = (state = initialState, action) => {
   switch (action.type) {
-
-    case SET_USER_BOOKS:
-      return {
-        ...state,
-        userBooks: [...action.payload]
-      };
-
-    case SET_USER_READ_BOOKS:
-      return {
-        ...state,
-        userReadBooks: [...action.payload]
-      };
-
-    case SET_USER_FAVORITE_BOOKS: {
-      return {
-        ...state,
-        userFavouriteBooks: [...action.payload]
-      };
-    }
 
     case FETCH_USER_BOOKS_REQUEST: {
       return {
@@ -73,6 +53,25 @@ export const libraryReducers = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload
+      };
+    }
+
+    case SET_USER_BOOKS:
+      return {
+        ...state,
+        userBooks: [...action.payload]
+      };
+
+    case SET_USER_READ_BOOKS:
+      return {
+        ...state,
+        userReadBooks: [...action.payload]
+      };
+
+    case SET_USER_FAVORITE_BOOKS: {
+      return {
+        ...state,
+        userFavouriteBooks: [...action.payload]
       };
     }
 

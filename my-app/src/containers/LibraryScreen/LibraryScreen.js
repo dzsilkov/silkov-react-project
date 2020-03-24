@@ -8,10 +8,11 @@ import {
   getIdsUserBooks,
   getReadBooksIds,
   getFavouriteBooksIds,
-  getUserFavouriteBooks
+  getUserFavouriteBooks,
+  getLibraryState
 } from './../Auth/selectors';
 
-import { fetchUserBooks } from './actions';
+import { fetchUserBooks, updateUserBooks } from './actions';
 
 
 const mapStateToProps = state => {
@@ -22,7 +23,9 @@ const mapStateToProps = state => {
   const userReadBooks = getUserReadBooks(state);
   const userFavouriteBooks = getUserFavouriteBooks(state);
   const activeUser = getActiveUser(state);
+  const libraryLists = getLibraryState(state);
   return {
+    libraryLists,
     userBooks,
     userReadBooks,
     userBooksIds,
@@ -36,6 +39,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    fetchUserBooks
+    fetchUserBooks,
+    updateUserBooks,
   }
 )(Library);

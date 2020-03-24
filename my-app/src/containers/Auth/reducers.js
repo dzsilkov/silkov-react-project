@@ -21,6 +21,7 @@ import {
   FETCH_ADD_USER_BOOK_SUCCESS,
   FETCH_ADD_USER_BOOK_FAILURE,
   ADD_BOOK_TO_LIBRARY,
+  UPDATE_ACTIVE_USER_BOOKS
 
 } from './actions';
 
@@ -79,6 +80,8 @@ export const libraryReducers = (state = initialState, action) => {
       };
     }
 
+
+
     case ADD_BOOK_TO_LIBRARY: {
       const book = action.payload;
       const userBooks = new Set([...state.userBooks, book]);
@@ -122,6 +125,16 @@ export const userReducers = (state = initialState, action) => {
         ...state,
         error: action.payload
       };
+
+    case UPDATE_ACTIVE_USER_BOOKS: {
+      const newBooks = action.payload;
+      return {
+        ...state,
+        authUser: {...state.authUser, books: {...newBooks}},
+        userBooks: [...newBooks]
+      };
+    }
+
     default:
       return state;
   }

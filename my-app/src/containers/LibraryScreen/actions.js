@@ -1,6 +1,7 @@
 import { usersApi } from '../../api/usersApi/usersApi';
 import { authUsers } from '../../api/usersApi/authUsers';
 import { booksApi } from '../../api/booksApi/booksApi';
+import { updateActiveUserBooks } from '../Auth/actions';
 
 export const SET_USER_BOOKS = 'SET_USER_BOOKS';
 export const setUserBooks = books => {
@@ -52,24 +53,7 @@ export const addBookToLibrary = book => {
 //   };
 // };
 //
-// export const fetchUpdateUser = (userId, data) => {
-//   const newBook = {
-//     id: data,
-//     read: false,
-//     favourite: false
-//   };
-//   return dispatch => {
-//     dispatch(fetchUserBooksRequest());
-//     return usersApi.updateUser(userId, newBook)
-//       .then(res => {
-//         console.log('user books Update', res)
-//         dispatch(fetchUserBooksSuccess(res.data))
-//       })
-//       .catch(error => {
-//         dispatch(fetchUserBooksFailure(error))
-//       })
-//   }
-// };
+
 //
 // export const fetchUserBooks = (userBooksIds, userReadBooksIds, userFavouriteBooksIds) => {
 //   return dispatch => {
@@ -92,6 +76,24 @@ export const addBookToLibrary = book => {
 // };
 //
 //
+// export const fetchUpdateUser = (userId, data) => {
+//   const newBook = {
+//     id: data,
+//     read: false,
+//     favourite: false
+//   };
+//   return dispatch => {
+//     dispatch(fetchUserBooksRequest());
+//     return usersApi.updateUser(userId, newBook)
+//       .then(res => {
+//         console.log('user books Update', res)
+//         dispatch(fetchUserBooksSuccess(res.data))
+//       })
+//       .catch(error => {
+//         dispatch(fetchUserBooksFailure(error))
+//       })
+//   }
+// };
 
 
 export const FETCH_USER_BOOKS_REQUEST = 'FETCH_USER_BOOKS_REQUEST';
@@ -100,7 +102,6 @@ export const fetchUserBooksRequest = () => {
     type: FETCH_USER_BOOKS_REQUEST,
   };
 };
-
 
 export const FETCH_USER_BOOKS_SUCCESS = 'FETCH_USER_BOOKS_SUCCESS';
 export const fetchUserBooksSuccess = books => {
@@ -118,13 +119,37 @@ export const fetchUserBooksFailure = error => {
   };
 };
 
+export const UPDATE_USER_BOOKS_REQUEST = 'UPDATE_USER_BOOKS_REQUEST';
+export const updateUserBooksRequest = () => {
+  return {
+    type: UPDATE_USER_BOOKS_REQUEST,
+  };
+};
+
+export const UPDATE_USER_BOOKS_SUCCESS = 'UPDATE_USER_BOOKS_SUCCESS';
+export const updateUserBooksSuccess = (books) => {
+  return {
+    type: UPDATE_USER_BOOKS_SUCCESS,
+    payload: books,
+  };
+};
+
+export const UPDATE_USER_BOOKS_FAILURE = 'UPDATE_USER_BOOKS_FAILURE';
+export const updateUserBooksFailure = (error) => {
+  return {
+    type: UPDATE_USER_BOOKS_FAILURE,
+    payload: error,
+  };
+};
+
+
 export const fetchUserBooks = userBooksIds => {
   return (dispatch, getState) => {
     dispatch(fetchUserBooksRequest());
     return booksApi.fetchUserBooks(userBooksIds)
-      .then(res => {
+      .then(({data}) => {
         const {activeUser: {userBooks}} = getState();
-        const libraryBooks = res.data.map(book => {
+        const libraryBooks = data.map(book => {
           return {...book, ...userBooks.find(userBook => book.id === userBook.id)};
         });
         const favouriteBooks = libraryBooks.filter(book => book.favourite);
@@ -133,6 +158,24 @@ export const fetchUserBooks = userBooksIds => {
       })
       .catch(error => {
         dispatch(fetchUserBooksFailure(error));
+      });
+  };
+};
+
+export const updateUserBooks = (id, prop) => {
+  return (dispatch, getState) => {
+    const {activeUser: {authUserId, userBooks}} = getState();
+    const data = userBooks.map(book => book.id === id ? {...book, [prop]: !book[prop]} : {...book});
+    dispatch(updateUserBooksRequest());
+    return usersApi.updateUserBooks(authUserId, data)
+      .then(({data: {books}}) => {
+        const usersBooksIds = books.map(book => book.id);
+        dispatch(updateUserBooksSuccess());
+        dispatch(updateActiveUserBooks(books));
+        dispatch(fetchUserBooks(usersBooksIds));
+      })
+      .catch(error => {
+        dispatch(updateUserBooksFailure(error));
       });
   };
 };

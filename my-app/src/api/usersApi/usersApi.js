@@ -51,14 +51,19 @@ export const usersApi = {
       });
   },
 
-  updateUser(userId, data) {
-    return axios.get(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`)
-      .then(res => {
-          console.log(res.data.books)
-        return axios.patch(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`, {books: [...res.data.books, data]} )
+  updateUserBooks(userId, data) {
+    return axios.patch(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`, {books: [...data]})
 
-        }
-      )
+    // return axios.get(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`)
+    //   .then(res => {
+    //       console.log(res.data.books)
+    //     return axios.patch(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`, {books: [...res.data.books, data]} )
+    //     }
+    //   )
+  },
+
+  getUserData(userId) {
+    return axios.get(`${USERS_API_BASE_ADDRESS}/${USERS_ENDPOINT}/${userId}`)
   },
 
   deleteUser(userId) {
