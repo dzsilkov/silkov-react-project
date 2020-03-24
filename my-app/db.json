@@ -37,11 +37,6 @@
       "password": "11111",
       "books": [
         {
-          "id": "439136369",
-          "read": false,
-          "favourite": false
-        },
-        {
           "id": "439064872",
           "read": true,
           "favourite": true
