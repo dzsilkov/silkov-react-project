@@ -3,10 +3,9 @@ import { useRouteNode } from 'react-router5';
 import NotFound from '../NotFound/NotFound';
 import BooksScreen from '../../containers/BooksScreen/BooksScreen';
 import BookDetail from '../BookDetails/BookDetail';
-import Library from '../Library/Library';
 import Settings from '../Settings/Settings';
-import Auth from '../../containers/Auth/Auth';
 import LibraryScreen from '../../containers/LibraryScreen/LibraryScreen';
+import User from '../../containers/User/User';
 
 const Main = ({authUser, isLoggedIn}) => {
   const {route} = useRouteNode('');
@@ -26,7 +25,7 @@ const Main = ({authUser, isLoggedIn}) => {
   }
 
   if (topRouteName === 'auth') {
-    return <Auth/>;
+    return <User/>;
   }
 
   if (topRouteName === 'settings') {

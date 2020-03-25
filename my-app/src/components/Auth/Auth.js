@@ -1,17 +1,19 @@
 import React from 'react';
+import SignUp from '../SignUp/SignUp';
+import SignIn from '../SignIn/SignIn';
+import AccountDashBoard from '../AcoountDashBoard/AccountDashBoard';
+import './Auth.css';
 
-import { connect } from 'react-redux';
-import { signUpUser, signInUser, signOutUser } from './../User/actions';
-import SignUp from '../../components/SignUp/SignUp';
-import SignIn from '../../components/SignIn/SignIn';
-import AccountDashBoard from '../../components/AcoountDashBoard/AccountDashBoard';
-import { getActiveUser, getAuthUserToken } from '../../redux/selectors/selectors';
-import './Auth.css'
-
-class Auth extends React.Component {
+export class Auth extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      initialUser: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+      },
       isLoggedIn: false
     };
 
@@ -28,15 +30,26 @@ class Auth extends React.Component {
   }
 
   render() {
-    const {isLoggedIn} = this.state;
-    const {signUpUser, signInUser, activeUser, signOutUser, authUserToken} = this.props;
+    const {isLoggedIn, initialUser} = this.state;
+    const {
+      signUpUser,
+      signInUser,
+      activeUser,
+      signOutUser,
+      authUserToken,
+      allBooksLength,
+      readBooksLength,
+      favouriteBooksLength
+    } = this.props;
 
     const authForm = isLoggedIn
       ? <SignIn
+        initialUser={initialUser}
         handleChangeLoggedIn={this.handleChangeLoggedIn}
         signInUser={signInUser}/>
 
       : <SignUp
+        initialUser={initialUser}
         signUpUser={signUpUser}
         handleChangeLoggedIn={this.handleChangeLoggedIn}
       />;
@@ -49,6 +62,9 @@ class Auth extends React.Component {
             <AccountDashBoard
               signOutUser={signOutUser}
               activeUser={activeUser}
+              allBooksLength={allBooksLength}
+              readBooksLength={readBooksLength}
+              favouriteBooksLength={favouriteBooksLength}
               // userBooks={userBooks}
               // userFavoriteBooks={userFavoriteBooks}
               // userReadBooks={userReadBooks}
@@ -61,18 +77,3 @@ class Auth extends React.Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  const activeUser = getActiveUser(state);
-  const authUserToken = getAuthUserToken(state);
-  return {activeUser, authUserToken};
-};
-
-export default connect(
-  mapStateToProps,
-  {
-    signUpUser,
-    signInUser,
-    signOutUser
-  }
-)(Auth);

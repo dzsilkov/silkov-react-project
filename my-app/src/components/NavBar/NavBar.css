@@ -1,7 +1,16 @@
 .navBar {
-  display: flex;
-  justify-content: space-between;
+  font-size: 1rem;
+  color: #ddd;
+  height: 6em;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
-  height: 100%;
-  margin: 0 4em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3),
+  -30px 0 25px -10px rgba(0, 0, 0, .6),
+  30px 0 25px -10px rgba(0, 0, 0, .6),
+  inset 0 0 40px rgba(0, 0, 0, .1);
+}
+
+.navBarLayout {
+
 }

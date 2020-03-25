@@ -2,18 +2,19 @@ import React from 'react';
 import FormFieldInput from '../FormFieldInput/FormFieldInput';
 import { useFormik } from 'formik/dist/index';
 import { validateSignUp } from './validate';
+import './SignUp.css'
 
 const SignUp = (props) => {
-  const {signUpUser, isLoggedIn, handleChangeLoggedIn} = props;
+  const {signUpUser, isLoggedIn, handleChangeLoggedIn, initialUser} = props;
 
   const signUpForm = useFormik(
     {
       initialValues:
         {
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: '',
+          firstName: initialUser.firstName,
+          lastName: initialUser.lastName,
+          email: initialUser.email,
+          password: initialUser.password,
           books: []
         },
       validateSignUp,
@@ -62,13 +63,13 @@ const SignUp = (props) => {
   };
 
   return (
-    <div className="signUp mt-6">
-      <h2 className="mt-5 my-1 text-2xl md:text-center text-white"
+    <div className="signUp">
+      <h2 className="signUpTitle"
       >
         Create your account
       </h2>
-      <div className="w-full mx-5 mb-5 max-w-md bg-gray-800">
-        <form className=" bg-white shadow-lg rounded px-8 py-8 pt-8"
+      <div className="authForm w-full max-w-md">
+        <form className="bg-white shadow-lg rounded px-8 py-8 pt-8"
               onSubmit={handleSubmit}
         >
           <div className="flex flex-wrap -mx-3 m3-2">

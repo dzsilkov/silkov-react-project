@@ -133,6 +133,10 @@ export const updateActiveUserBooks = books => {
 
 };
 
+export const resetAuthForm = () => {
+
+};
+
 export const signOutUser = () => {
   return dispatch => {
     dispatch(signOutRequest());
@@ -146,9 +150,9 @@ export const signInUser = user => {
     dispatch(signInRequest());
     usersApi.signInUser(user)
       .then(res => {
-        console.log(res);
         if (typeof res !== 'string' && res.token) {
           dispatch(setAuthToken(res.token));
+          dispatch(signInSuccess());
           dispatch(authenticateUser(res.token));
         } else {
           dispatch(signInFailure(res));
@@ -167,6 +171,7 @@ export const signUpUser = user => {
       .then(res => {
         if (typeof res !== 'string' && res.token) {
           dispatch(setAuthToken(res.token));
+          dispatch(signUpSuccess());
           dispatch(authenticateUser(res.token));
         } else {
           dispatch(signUpFailure(res));

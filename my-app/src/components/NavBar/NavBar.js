@@ -8,9 +8,9 @@ import AuthStatus from '../AuthStatus/AuthStatus';
 const NavBar = ({activeUser}) => {
   return (
     <div className="navBar">
-      <Logo/>
-      <Nav activeUser={activeUser}/>
-      <AuthStatus activeUser={activeUser}/>
+        <Logo/>
+        <Nav activeUser={activeUser}/>
+        <AuthStatus activeUser={activeUser}/>
     </div>
   );
 };

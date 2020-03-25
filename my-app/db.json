@@ -44,22 +44,22 @@
         {
           "id": "439064872",
           "read": false,
-          "favourite": true
+          "favourite": false
         },
         {
           "id": "1451635621",
           "read": false,
-          "favourite": true
+          "favourite": false
         },
         {
           "id": "067001690X",
-          "read": true,
+          "read": false,
           "favourite": false
         },
         {
           "id": "439064872",
           "read": true,
-          "favourite": false
+          "favourite": true
         },
         {
           "id": "1950435091",
