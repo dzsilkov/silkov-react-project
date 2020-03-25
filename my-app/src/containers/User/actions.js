@@ -3,6 +3,7 @@ import { usersApi } from '../../api/usersApi/usersApi';
 
 import { throwError } from '../../redux/actions/error';
 import { deleteAuth, setAuthToken } from '../../redux/actions/auth';
+import { clearLibrary } from '../LibraryScreen/actions';
 
 
 export const AUTHENTICATE_USER_REQUEST = 'AUTHENTICATE_USER_REQUEST';
@@ -136,6 +137,7 @@ export const signOutUser = () => {
   return dispatch => {
     dispatch(signOutRequest());
     dispatch(deleteAuth());
+    dispatch(clearLibrary())
   };
 };
 

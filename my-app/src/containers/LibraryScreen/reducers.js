@@ -5,6 +5,7 @@ import {
   UPDATE_USER_BOOKS_REQUEST,
   UPDATE_USER_BOOKS_SUCCESS,
   UPDATE_USER_BOOKS_FAILURE,
+  CLEAR_LIBRARY,
 } from './actions';
 
 const initialState = {
@@ -55,6 +56,16 @@ export const libraryReducers = (state = initialState, action) => {
     case UPDATE_USER_BOOKS_FAILURE: {
       return {
         ...state,
+      };
+    }
+
+    case CLEAR_LIBRARY: {
+      return {
+        ...state,
+        libraryBooks: [],
+        userReadBooks: [],
+        userFavouriteBooks: [],
+        error: null
       };
     }
 

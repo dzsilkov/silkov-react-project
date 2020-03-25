@@ -48,23 +48,33 @@ export const updateUserBooksFailure = error => {
   };
 };
 
+export const CLEAR_LIBRARY = 'CLEAR_LIBRARY';
+export const clearLibrary = () => {
+  return {
+    type: CLEAR_LIBRARY,
+  }
+};
+
 export const fetchLibraryBooks = () => {
   return (dispatch, getState) => {
     const {activeUser: {userBooksIds}} = getState();
-    dispatch(fetchUserBooksRequest());
-    return booksApi.fetchUserBooks(userBooksIds)
-      .then(({data}) => {
-        const {activeUser: {userBooks}} = getState();
-        const libraryBooks = data.map(book => {
-          return {...book, ...userBooks.find(userBook => book.id === userBook.id)};
+    if (userBooksIds.length !== 0) {
+      dispatch(fetchUserBooksRequest());
+      return booksApi.fetchUserBooks(userBooksIds)
+        .then(({data}) => {
+          const {activeUser: {userBooks}} = getState();
+          console.log(userBooks);
+          const libraryBooks = data.map(book => {
+            return {...book, ...userBooks.find(userBook => book.id === userBook.id)};
+          });
+          const favouriteBooks = [...libraryBooks.filter(book => book.favourite)];
+          const readBooks = [...libraryBooks.filter(book => book.read)];
+          dispatch(fetchUserBooksSuccess({libraryBooks, favouriteBooks, readBooks}));
+        })
+        .catch(error => {
+          dispatch(fetchUserBooksFailure(error));
         });
-        const favouriteBooks = [...libraryBooks.filter(book => book.favourite)];
-        const readBooks = [...libraryBooks.filter(book => book.read)];
-        dispatch(fetchUserBooksSuccess({libraryBooks, favouriteBooks, readBooks}));
-      })
-      .catch(error => {
-        dispatch(fetchUserBooksFailure(error));
-      });
+    }
   };
 };
 

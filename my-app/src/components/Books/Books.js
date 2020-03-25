@@ -57,7 +57,6 @@ class Books extends React.Component {
 
   render() {
     const {books, totalBooks, booksPerPage, currentPage} = this.props;
-    console.log(this.props)
     return (
       <div>
         <section>
@@ -70,8 +69,6 @@ class Books extends React.Component {
               <Search/>
 
               <Pagination
-
-
                 currentPage={currentPage}
                 totalItems={totalBooks}
                 itemsPerPage={booksPerPage}

@@ -6,7 +6,7 @@ import SignUp from '../../components/SignUp/SignUp';
 import SignIn from '../../components/SignIn/SignIn';
 import AccountDashBoard from '../../components/AcoountDashBoard/AccountDashBoard';
 import { getActiveUser, getAuthUserToken } from '../../redux/selectors/selectors';
-
+import './Auth.css'
 
 class Auth extends React.Component {
   constructor(props) {

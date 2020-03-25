@@ -37,8 +37,7 @@ export const getAuth = () => {
 export const deleteAuth = () => {
   return dispatch => {
     return authUsers.signOutUser()
-      .then(res => {
-        console.log(res)
+      .then(() => {
         dispatch(deleteAuthToken());
         dispatch(signOutSuccess());
       })
