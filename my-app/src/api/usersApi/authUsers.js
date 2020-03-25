@@ -22,7 +22,7 @@ export const authUsers = {
   },
 
   signOutUser() {
-    return Promise.resolve(removeToken(LOCAL_STORAGE_KEY));
+    return removeToken(LOCAL_STORAGE_KEY);
   },
 
   getToken() {

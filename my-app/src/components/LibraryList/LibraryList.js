@@ -19,9 +19,9 @@ const LibraryList = (props) => {
   });
 
   return (
-    <div className="libraryList">
+    <div className="libraryListCard">
       <h3 className="libraryListTitle">{title}</h3>
-      <ul>
+      <ul className='libraryList'>
         {list}
       </ul>
       <p className="libraryListFooter">

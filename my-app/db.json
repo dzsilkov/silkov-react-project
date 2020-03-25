@@ -37,22 +37,32 @@
       "password": "11111",
       "books": [
         {
-          "id": "439136369",
+          "id": "618645616",
           "read": false,
           "favourite": false
         },
         {
           "id": "439064872",
-          "read": true,
+          "read": false,
           "favourite": true
         },
         {
-          "id": "439136369",
+          "id": "1451635621",
           "read": false,
+          "favourite": true
+        },
+        {
+          "id": "067001690X",
+          "read": true,
           "favourite": false
         },
         {
-          "id": "62312189",
+          "id": "439064872",
+          "read": true,
+          "favourite": false
+        },
+        {
+          "id": "1950435091",
           "read": false,
           "favourite": false
         }

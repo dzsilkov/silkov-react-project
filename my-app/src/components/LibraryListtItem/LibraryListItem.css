@@ -4,11 +4,14 @@
   justify-content: space-between;
   align-items: center;
   padding: .6em 1.2em;
-  background: #fff;
+  background: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  transition: .2s;
+  will-change: transform;
 }
 
 .libraryListItem:nth-child(2n) {
-  background: #f5f4f5;
+  background: rgba(0, 0, 0, .05);
 }
 
 .libraryListItemHeader h4 {
@@ -26,4 +29,8 @@
 .actionRemove {
   padding-left: .8em;
   cursor: pointer;
+}
+
+.libraryListItem:hover {
+  transform: scale(1.03);
 }

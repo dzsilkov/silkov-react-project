@@ -1,10 +1,10 @@
-.library {
+.auth {
   font-size: 1rem;
   display: grid;
   width: 100%;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 1em;
-  padding: .5em;
+  grid-template-columns: 1fr;
+  grid-gap: 2em;
+  padding: 2em;
   margin: 6em 2em 2em;
   color: rgba(0, 0, 0, .8);
   background-color: rgba(255, 255, 255, 1);
@@ -12,16 +12,4 @@
   -30px 0 25px -10px rgba(0, 0, 0, .6),
   30px 0 25px -10px rgba(0, 0, 0, .6),
   inset 0 0 40px rgba(0, 0, 0, .1);
-}
-
-@media (max-width: 1500px) {
-  .library {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 800px) {
-  .library {
-    grid-template-columns: 1fr;
-  }
 }
