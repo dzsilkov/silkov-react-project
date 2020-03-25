@@ -51,7 +51,7 @@ export const fetchBookByIdSuccess = book => {
 };
 
 
-export const fetchBooks = (currentPage = 1, pageSize = 5) => {
+export const fetchBooks = (currentPage, pageSize) => {
   return dispatch => {
     dispatch(fetchBooksRequest());
     return booksApi.fetchBooks(currentPage, pageSize)

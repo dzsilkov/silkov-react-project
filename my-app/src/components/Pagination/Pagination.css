@@ -2,10 +2,9 @@
   display: flex;
 }
 
-.pageItem {
-
-}
-
-.pageLink {
-
+.paginationList {
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

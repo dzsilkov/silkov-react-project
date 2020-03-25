@@ -2,7 +2,7 @@
   font-size: 1rem;
   display: flex;
   align-items: center;
-  padding: .5em;
+  border-radius: 1.4em;
 }
 
 .actionUpDown {

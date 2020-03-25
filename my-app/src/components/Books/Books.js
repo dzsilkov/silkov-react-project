@@ -11,6 +11,7 @@ class Books extends React.Component {
     this.state = {
       books: [],
       currentPage: '',
+      booksPerPage: '',
     };
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
@@ -19,8 +20,8 @@ class Books extends React.Component {
   }
 
   componentDidMount() {
-    const {fetchBooks} = this.props;
-    fetchBooks();
+    const {fetchBooks, currentPage, booksPerPage} = this.props;
+    fetchBooks(currentPage, booksPerPage);
   }
 
   componentDidUpdate(prevState) {
@@ -59,24 +60,25 @@ class Books extends React.Component {
     const {books, totalBooks, booksPerPage, currentPage} = this.props;
     return (
       <div>
+        <Search/>
         <section>
-            <div className="headerContent">
-              <CarouselPaginated
-                books={books}
-                prevPage={this.prevPage}
-                nextPage={this.nextPage}
-              />
-              <Search/>
+          <div className="headerContent">
+            <CarouselPaginated
+              books={books}
+              prevPage={this.prevPage}
+              nextPage={this.nextPage}
+            />
 
-              <Pagination
-                currentPage={currentPage}
-                totalItems={totalBooks}
-                itemsPerPage={booksPerPage}
-                paginate={this.setPageNumber}
-                nextPage={this.nextPage}
-                prevPage={this.prevPage}
-                setItemsPerPage={this.setBooksPerPage}
-              />
+
+            <Pagination
+              currentPage={currentPage}
+              totalItems={totalBooks}
+              itemsPerPage={booksPerPage}
+              paginate={this.setPageNumber}
+              nextPage={this.nextPage}
+              prevPage={this.prevPage}
+              setItemsPerPage={this.setBooksPerPage}
+            />
           </div>
         </section>
       </div>
