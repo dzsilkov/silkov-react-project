@@ -20,12 +20,13 @@ const initialState = {
   allIds: [],
   byIds: {},
   books: [],
+  inActiveUserBooksIds: [],
   selectedBook: {},
   totalBooks: null,
   isFetching: false,
-  error: '',
   currentPage: 1,
   booksPerPage: 5,
+  error: '',
 };
 
 export const bookReducers = (state = initialState, action) => {
@@ -79,10 +80,9 @@ export const bookReducers = (state = initialState, action) => {
     }
 
     case SET_BOOKS_PER_PAGE: {
-      const booksPerPage = action.payload;
       return {
         ...state,
-        booksPerPage: booksPerPage
+        booksPerPage: action.payload
       };
     }
     default:

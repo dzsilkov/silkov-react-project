@@ -7,24 +7,9 @@
       "password": "00000",
       "books": [
         {
-          "id": "140268863",
-          "read": true,
-          "favourite": true
-        },
-        {
           "id": "1491989149",
-          "read": false,
-          "favourite": true
-        },
-        {
-          "id": "64404994",
           "read": true,
-          "favourite": false
-        },
-        {
-          "id": "399589104",
-          "read": false,
-          "favourite": false
+          "favourite": true
         }
       ],
       "token": "Books_hbR6o-nzvBb7rzaVIChrF",

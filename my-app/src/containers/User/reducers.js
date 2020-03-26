@@ -23,6 +23,8 @@ export const initialState = {
   email: null,
   userBooks: [],
   userBooksIds: [],
+  userReadBooksIds: [],
+  userFavouriteBooksIds: [],
   error: null,
 };
 
@@ -37,7 +39,7 @@ export const userReducers = (state = initialState, action) => {
       };
 
     case SET_ACTIVE_USER:
-      const {id, firstName, lastName, email, books, userBooksIds} = action.payload;
+      const {id, firstName, lastName, email, books, userBooksIds, userFavouriteBooksIds, userReadBooksIds} = action.payload;
       return {
         ...state,
         userId: id,
@@ -46,6 +48,8 @@ export const userReducers = (state = initialState, action) => {
         email: email,
         userBooks: [...books],
         userBooksIds: [...userBooksIds],
+        userReadBooksIds: [...userReadBooksIds],
+        userFavouriteBooksIds: [...userFavouriteBooksIds],
         error: null,
       };
 

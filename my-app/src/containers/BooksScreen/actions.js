@@ -35,10 +35,10 @@ export const setCurrentPage = pageNumber => {
 };
 
 export const SET_BOOKS_PER_PAGE = 'SET_BOOKS_PER_PAGE';
-export const setBooksPerPage = number => {
+export const setBooksPerPage = filter => {
   return {
     type: SET_BOOKS_PER_PAGE,
-    payload: number,
+    payload: filter,
   };
 };
 
@@ -50,12 +50,11 @@ export const fetchBookByIdSuccess = book => {
   };
 };
 
-
 export const fetchBooks = (currentPage, pageSize) => {
   return dispatch => {
     dispatch(fetchBooksRequest());
     return booksApi.fetchBooks(currentPage, pageSize)
-      .then((res) => {
+      .then(res => {
         dispatch(fetchBooksSuccess(res.data, res.headers[`x-total-count`]));
       })
       .catch(error => {
@@ -64,12 +63,11 @@ export const fetchBooks = (currentPage, pageSize) => {
   };
 };
 
-export const fetchBookById = (id) => {
+export const fetchBookById = id => {
   return dispatch => {
-    (fetchBooksRequest());
+    dispatch(fetchBooksRequest());
     return booksApi.fetchBookById(id)
       .then(res => {
-        console.log((res));
         dispatch(fetchBookByIdSuccess(res.data));
       })
       .catch(error => {

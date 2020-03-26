@@ -1,5 +1,6 @@
 .carouselItems {
   padding: 2em 0 2em;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -9,6 +10,13 @@
 
 .carouselItems::-webkit-scrollbar {
   width: 0;
+}
+
+.carouselItemsList {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .carouselControl {

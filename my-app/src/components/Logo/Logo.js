@@ -10,12 +10,14 @@ const Logo = (props) => {
   const {router} = useRoute();
 
   return (
-    <div className="logo">
+    <div className="logoLinkContainer">
       <Link
         router={router}
         routeName={'books'}
       >
-        <FontAwesomeIcon size="3x" icon={faBook}/>
+        <FontAwesomeIcon
+          className="logo"
+          size="3x" icon={faBook}/>
       </Link>
     </div>
   );

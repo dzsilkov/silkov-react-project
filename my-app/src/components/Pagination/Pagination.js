@@ -1,17 +1,9 @@
 import React from 'react';
-import {
-  faChevronRight,
-  faChevronLeft,
-  faAngleDoubleLeft,
-  faAngleDoubleRight,
-  faEllipsisH
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index.es';
 import './Pagination.css';
 import PaginationItem from '../PaginationItem/PaginationItem';
 
-const Pagination = ({currentPage, itemsPerPage, totalItems, paginate, prevPage, nextPage, setItemsPerPage}) => {
-
+const Pagination = props => {
+  const {currentPage, itemsPerPage, totalItems, paginate, prevPage, nextPage, setItemsPerPage} = props;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const createRangeForPagination = (current, end, delta) => {
@@ -59,46 +51,11 @@ const Pagination = ({currentPage, itemsPerPage, totalItems, paginate, prevPage, 
   });
 
   return (
-    <div>
-      <div className="pagination">
-        {/*<span className="pageChevron" onClick={prevPage}>*/}
-           {/*<FontAwesomeIcon icon={faChevronLeft}/>*/}
-          {/*</span>*/}
-        {/*<span className="pageChevron" onClick={prevPage}>*/}
-            {/*<FontAwesomeIcon icon={faAngleDoubleLeft}/>*/}
-          {/*</span>*/}
-        <ul className="paginationList">
-          {pagination}
-        </ul>
-        {/*<span className="pageChevron" onClick={nextPage}>*/}
-           {/*<FontAwesomeIcon icon={faAngleDoubleRight}/>*/}
-          {/*</span>*/}
-        {/*<span className="pageChevron" onClick={nextPage}>*/}
-           {/*<FontAwesomeIcon icon={faChevronRight}/>*/}
-          {/*</span>*/}
-      </div>
-      <div className="pagination">
-        <div className="page-item">
-      <span onClick={() => setItemsPerPage(3)} className="page-link">
-      {'3'}
-      </span>
-        </div>
-        <div className="page-item">
-      <span onClick={() => setItemsPerPage(5)} className="page-link">
-      {'5'}
-      </span>
-        </div>
-        <div className="page-item">
-      <span onClick={() => setItemsPerPage(6)} className="page-link">
-      {'6'}
-      </span>
-        </div>
-        <div className="page-item">
-      <span onClick={() => setItemsPerPage(10)} className="page-link">
-      {'10'}
-      </span>
-        </div>
-      </div>
+    <div className="pagination">
+      <span className="pagination-label">Go to page:</span>
+      <ul className="paginationList">
+        {pagination}
+      </ul>
     </div>
   );
 };

@@ -4,9 +4,9 @@ import { signUpUser, signInUser, signOutUser, resetAuthForm } from './../User/ac
 import {
   getActiveUser,
   getAuthUserToken,
-  getAllLibraryBooks,
-  getReadLibraryBooks,
-  getFavouriteLibraryBooks
+  getAllUserBooks,
+  getReadUserBooks,
+  getFavouriteUserBooks
 
 } from '../../redux/selectors/selectors';
 import { Auth } from '../../components/Auth/Auth';
@@ -14,9 +14,9 @@ import { Auth } from '../../components/Auth/Auth';
 const mapStateToProps = state => {
   const activeUser = getActiveUser(state);
   const authUserToken = getAuthUserToken(state);
-  const allBooksLength = getAllLibraryBooks(state).length;
-  const readBooksLength = getReadLibraryBooks(state).length;
-  const favouriteBooksLength = getFavouriteLibraryBooks(state).length;
+  const allBooksLength = getAllUserBooks(state).length;
+  const readBooksLength = getReadUserBooks(state).length;
+  const favouriteBooksLength = getFavouriteUserBooks(state).length;
   return {activeUser, authUserToken, allBooksLength, readBooksLength, favouriteBooksLength};
 };
 

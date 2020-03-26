@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { faPlusCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faPlusCircle,faStarHalfAlt, faCheckCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faGrinStars } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index.es';
 import { fetchBookById } from '../../containers/BooksScreen/actions';
 import { getSelectedBook } from '../../containers/BooksScreen/selectors';
 import './BookDetail.css';
 import { addBookToLibrary } from '../../containers/LibraryScreen/actions';
+import { getAllUserBooks } from '../../redux/selectors/selectors';
 
 
 class BookDetail extends React.Component {
@@ -22,6 +24,7 @@ class BookDetail extends React.Component {
   render() {
     const {
       addBookToLibrary,
+      userBooksIds,
       selectedBook:
         {
           title,
@@ -34,7 +37,8 @@ class BookDetail extends React.Component {
         }
     } = this.props;
 
-    const icon = 'added' ? faCheckCircle : faPlusCircle;
+    const inUserBooks = userBooksIds.includes(id);
+    const icon = inUserBooks ? faMinusCircle : faPlusCircle;
 
     return (
       <section className="bookDetail">
@@ -42,7 +46,17 @@ class BookDetail extends React.Component {
           <img className="bookImage" src={coverImageUrl} alt={`${title} book image`}/>
           <div className="bookDetailContent">
             <h2 className="bookTitle">{title}</h2>
-            <p className="bookAuthor"><i>{author}</i></p>
+            <div className="authorRank">
+              <p className="bookAuthor"><i>{author}</i></p>
+              <span className="rank">
+              <FontAwesomeIcon size="2x" icon={faStar}/>
+              <FontAwesomeIcon size="2x" icon={faStar}/>
+              <FontAwesomeIcon size="2x" icon={faStar}/>
+              <FontAwesomeIcon size="2x" icon={faStar}/>
+              <FontAwesomeIcon size="2x" icon={faStarHalfAlt}/>
+            </span>
+            </div>
+
             <p className="bookSynopsis">{synopsis}</p>
             <div className="bookCardFooter">
               <span className="bookPublisher"><i>{publisher}</i></span>
@@ -51,7 +65,7 @@ class BookDetail extends React.Component {
             <div className="bookActions"
                  onClick={() => addBookToLibrary(id)}>
               <span className="actionBookButton">
-              <FontAwesomeIcon size="2x" color={'#96C178'} icon={icon}/>
+              <FontAwesomeIcon size="3x" color={inUserBooks ? '#ff6347' : '#96C178'} icon={icon}/>
             </span></div>
           </div>
         </div>
@@ -63,7 +77,8 @@ class BookDetail extends React.Component {
 
 const mapStateToProps = state => {
   const selectedBook = getSelectedBook(state);
-  return {selectedBook};
+  const userBooksIds = getAllUserBooks(state);
+  return {selectedBook, userBooksIds};
 };
 
 export default connect(

@@ -1,0 +1,92 @@
+.visibility-filters {
+  font-size: 1rem;
+  padding: .5em 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: .5em;
+}
+
+.visibility-filters-label {
+  font-size: 1.5em;
+  color: #dddddd;
+  font-weight: 500;
+  margin: .6em;
+}
+
+.visibility-filters .filter {
+  font-size: 1rem;
+  font-weight: 500;
+  display: block;
+  height: 2em;
+  width: 2em;
+  margin: .5em;
+  position: relative;
+  text-align: center;
+  line-height: 2em;
+  color: rgba(0, 0, 0, .6);
+  transition: all ease 0.2s;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.visibility-filters .filter::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+.visibility-filters .filter--active {
+  color: #ff6347;
+  font-weight: 600;
+  transform: scale(1.4);
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3),
+  -30px 0 25px -10px rgba(0, 0, 0, .4),
+  30px 0 25px -10px rgba(0, 0, 0, .4),
+  inset 0 0 40px rgba(0, 0, 0, .1);
+}
+
+.visibility-filters .filter:hover::after {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+.visibility-filters .filter:hover::after {
+  animation: animate ease 0.5s forwards;
+}
+
+@keyframes animate {
+  0%, 20% {
+    transform: scale(1);
+    border-radius: 1.6em;
+    background-color: #ddd;
+  }
+  30% {
+    border-radius: 1.2em;
+    transform: scale(1.2);
+  }
+  50% {
+    border-radius: .8em;
+    transform: scale(1.1);
+  }
+  60% {
+    transform: scale(1);
+    border-radius: .6em;
+  }
+  80%, 100% {
+    transform: scale(1);
+    border-radius: .2em;
+  }
+}
+
