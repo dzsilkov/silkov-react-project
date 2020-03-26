@@ -8,8 +8,11 @@
   transition: ease .4s;
 }
 
-img {
-  /*height: 10vh;*/
+.carouselCardImage {
+  width: 100%;
+  height: auto;
+  max-width: 12em;
+  max-height: 18em;
 }
 
 .itemCardTitle {

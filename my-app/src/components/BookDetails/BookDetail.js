@@ -1,13 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { faStar, faPlusCircle,faStarHalfAlt, faCheckCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
-import { faGrinStars } from '@fortawesome/free-regular-svg-icons';
+import { faStar, faPlusCircle, faStarHalfAlt, faCheckCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index.es';
-import { fetchBookById } from '../../containers/BooksScreen/actions';
-import { getSelectedBook } from '../../containers/BooksScreen/selectors';
 import './BookDetail.css';
-import { addBookToLibrary } from '../../containers/LibraryScreen/actions';
-import { getAllUserBooks } from '../../redux/selectors/selectors';
 
 
 class BookDetail extends React.Component {
@@ -19,7 +13,6 @@ class BookDetail extends React.Component {
     const {fetchBookById, id} = this.props;
     fetchBookById(id);
   }
-
 
   render() {
     const {
@@ -75,16 +68,4 @@ class BookDetail extends React.Component {
 
 }
 
-const mapStateToProps = state => {
-  const selectedBook = getSelectedBook(state);
-  const userBooksIds = getAllUserBooks(state);
-  return {selectedBook, userBooksIds};
-};
-
-export default connect(
-  mapStateToProps,
-  {
-    fetchBookById,
-    addBookToLibrary,
-  }
-)(BookDetail);
+export default BookDetail;

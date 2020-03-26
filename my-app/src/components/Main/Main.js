@@ -2,10 +2,10 @@ import React from 'react';
 import { useRouteNode } from 'react-router5';
 import NotFound from '../NotFound/NotFound';
 import BooksScreen from '../../containers/BooksScreen/BooksScreen';
-import BookDetail from '../BookDetails/BookDetail';
 import Settings from '../Settings/Settings';
 import LibraryScreen from '../../containers/LibraryScreen/LibraryScreen';
 import User from '../../containers/User/User';
+import BookDetail from '../../containers/BookDetail/BookDetail';
 
 const Main = ({authUser, isLoggedIn}) => {
   const {route} = useRouteNode('');

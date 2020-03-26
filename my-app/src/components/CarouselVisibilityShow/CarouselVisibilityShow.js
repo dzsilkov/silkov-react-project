@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { VISIBILITY_FILTERS } from '../../containers/BooksScreen/constants';
+import { VISIBILITY_FILTERS } from '../../redux/constants/constants';
 import './CarouselVisibilityShow.css';
 
 

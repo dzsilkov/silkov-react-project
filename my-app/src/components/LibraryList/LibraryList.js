@@ -21,9 +21,9 @@ const LibraryList = (props) => {
   return (
     <div className="libraryListCard">
       <h3 className="libraryListTitle">{title}</h3>
-      <ul className='libraryList'>
+      <div className='libraryList'>
         {list}
-      </ul>
+      </div>
       <p className="libraryListFooter">
       </p>
     </div>

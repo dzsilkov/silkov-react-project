@@ -1,11 +1,10 @@
 .carouselItems {
-  padding: 2em 0 2em;
+  padding: 1em 0 2em;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  overflow: scroll;
-  transition: visibility .5s .5s;
+  /*transition: visibility .5s .5s;*/
 }
 
 .carouselItems::-webkit-scrollbar {
@@ -56,7 +55,6 @@
 
 .carouselControl--next:before {
   margin-left: -.6em;
-
   transform: translateX(-.3em) rotate(135deg);
 }
 

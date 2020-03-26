@@ -1,5 +1,13 @@
 import { booksApi } from '../../api/booksApi/booksApi';
 
+export const SET_HOVERED_BOOK = 'SET_HOVERED_BOOK';
+export const setHoveredBook = id => {
+  return {
+    type: SET_HOVERED_BOOK,
+    payload: id
+  };
+};
+
 export const FETCH_BOOKS_REQUEST = 'FETCH_BOOKS_REQUEST';
 export const fetchBooksRequest = () => {
   return {

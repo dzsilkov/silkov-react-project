@@ -2,13 +2,13 @@ import {
   fetchBooks,
   fetchBookById,
   setCurrentPage,
-  setBooksPerPage
+  setBooksPerPage,
+  setHoveredBook
 } from './actions';
 
 import {addBookToLibrary} from './../LibraryScreen/actions'
 import { connect } from 'react-redux';
-import { getBooks, getBooksPerPage, getTotalBooks, getCurrentPage, getSelectedBook } from './selectors';
-
+import { getActiveBook, getBooks, getBooksPerPage, getTotalBooks, getCurrentPage, getSelectedBook } from '../../redux/selectors/selectors';
 import Books from '../../components/Books/Books';
 
 const mapStateToProps = state => {
@@ -17,7 +17,10 @@ const mapStateToProps = state => {
   const booksPerPage = getBooksPerPage(state);
   const currentPage = getCurrentPage(state);
   const book = getSelectedBook(state);
-  return {book, books, totalBooks, booksPerPage, currentPage};
+  const activeBook =  getActiveBook(state);
+
+
+  return {book, books, totalBooks, booksPerPage, currentPage, activeBook};
 };
 
 export default connect(
@@ -27,6 +30,7 @@ export default connect(
     fetchBookById,
     setCurrentPage,
     setBooksPerPage,
-    addBookToLibrary
+    addBookToLibrary,
+    setHoveredBook
   }
 )(Books);

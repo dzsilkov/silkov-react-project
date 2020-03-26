@@ -2,11 +2,10 @@ import React from 'react';
 import DashboardBackgroundPart from '../DashboardBackgroundPart/DashboardBackgroundPart';
 
 
-const DashboardBackgroundParts = ({parts, img}) => {
-
+const DashboardBackgroundParts = ({parts, book:{coverImageUrl}}) => {
   const imageParts = [...Array(parts)].map((part, index) => {
     return (
-      <DashboardBackgroundPart img={img} key={index}/>
+      <DashboardBackgroundPart img={coverImageUrl} key={index}/>
     );
   });
 
