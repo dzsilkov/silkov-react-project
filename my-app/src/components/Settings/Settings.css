@@ -18,7 +18,7 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 1em;
   padding: 1em;
-  margin: 6em 2em 2em;
+  margin: 6em 2em 0;
   color: rgba(0, 0, 0, .8);
   background-color: rgba(255, 255, 255, .1);
   box-shadow: 0 1px 4px rgba(0, 0, 0, .3),
@@ -31,4 +31,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .2),
+  -30px 0 25px -10px rgba(0, 0, 0, .4),
+  30px 0 25px -10px rgba(0, 0, 0, .4),
+  inset 0 0 40px rgba(0, 0, 0, .1);
 }

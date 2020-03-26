@@ -1,17 +1,11 @@
 import React from 'react';
 import './Books.css';
 import CarouselPaginated from '../CarouselPaginated/CarouselPaginated';
-import Pagination from '../Pagination/Pagination';
-import Search from '../Search/Search';
 
 class Books extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      books: [],
-      currentPage: '',
-    };
+    this.handlerHover = this.handlerHover.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
     this.setPageNumber = this.setPageNumber.bind(this);
@@ -19,8 +13,8 @@ class Books extends React.Component {
   }
 
   componentDidMount() {
-    const {fetchBooks} = this.props;
-    fetchBooks();
+    const {fetchBooks, currentPage, booksPerPage} = this.props;
+    fetchBooks(currentPage, booksPerPage);
   }
 
   componentDidUpdate(prevState) {
@@ -55,33 +49,85 @@ class Books extends React.Component {
     setCurrentPage(pageNumber);
   }
 
-  render() {
-    const {books, totalBooks, booksPerPage, currentPage} = this.props;
-    return (
-      <div>
-        <section>
-            <div className="headerContent">
-              <CarouselPaginated
-                books={books}
-                prevPage={this.prevPage}
-                nextPage={this.nextPage}
-              />
-              <Search/>
+  handlerHover(id) {
+    const {setHoveredBook} = this.props;
+    setHoveredBook(id);
+  }
 
-              <Pagination
-                currentPage={currentPage}
-                totalItems={totalBooks}
-                itemsPerPage={booksPerPage}
-                paginate={this.setPageNumber}
-                nextPage={this.nextPage}
-                prevPage={this.prevPage}
-                setItemsPerPage={this.setBooksPerPage}
-              />
-          </div>
-        </section>
+  render() {
+    const {
+      books,
+      totalBooks,
+      booksPerPage,
+      currentPage,
+      setBooksPerPage,
+      activeBook
+    } = this.props;
+
+    return (
+      <div className="books">
+        <img className="backImage" src={activeBook.coverImageUrl} alt="book image"/>
+        <CarouselPaginated
+          books={books}
+          prevPage={this.prevPage}
+          nextPage={this.nextPage}
+          currentPage={currentPage}
+          totalItems={totalBooks}
+          itemsPerPage={booksPerPage}
+          paginate={this.setPageNumber}
+          setBooksPerPage={setBooksPerPage}
+          handlerHover={this.handlerHover}
+        />
+
       </div>
     );
   }
 }
 
 export default Books;
+
+
+{/*<div className="books">*/
+}
+{/*<Search/>*/
+}
+{/*<section>*/
+}
+{/*<div className="headerContent">*/
+}
+{/*<CarouselPaginated*/
+}
+{/*books={books}*/
+}
+{/*prevPage={this.prevPage}*/
+}
+{/*nextPage={this.nextPage}*/
+}
+{/*/>*/
+}
+
+
+{/*<Pagination*/
+}
+{/*currentPage={currentPage}*/
+}
+{/*totalItems={totalBooks}*/
+}
+{/*itemsPerPage={booksPerPage}*/
+}
+{/*paginate={this.setPageNumber}*/
+}
+{/*nextPage={this.nextPage}*/
+}
+{/*prevPage={this.prevPage}*/
+}
+{/*setItemsPerPage={this.setBooksPerPage}*/
+}
+{/*/>*/
+}
+{/*</div>*/
+}
+{/*</section>*/
+}
+{/*</div>*/
+}

@@ -33,18 +33,9 @@ class Library extends React.Component {
       deleteUserBook(elemId);
     }
 
-
-    // this.setState(prevState => {
-    //   const updateItems = prevState.books.map(item => {
-    //     return item.id === id
-    //       ? {...item, [prop]: !item[prop]}
-    //       : {...item};
-    //   });
-    //   return ({
-    //     books: updateItems
-    //   });
-    // });
   }
+
+
 
 
   render() {

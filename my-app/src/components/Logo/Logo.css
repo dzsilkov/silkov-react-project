@@ -1,12 +1,15 @@
-.logo {
+.logoLinkContainer {
   font-size: 1rem;
   font-weight: 700;
   color: rgba(255, 255, 255, .9);
   padding: .5em 0 0;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo:hover {
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, 1);
   transform: scale(1.1);
 }

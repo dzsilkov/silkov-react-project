@@ -5,15 +5,8 @@ import {
   SET_BOOKS_PER_PAGE,
   SET_CURRENT_PAGE,
   FETCH_BOOK_BY_ID_SUCCESS,
+  SET_HOVERED_BOOK,
 } from './actions';
-
-function updateByIds(prevState, arr, ByIds) {
-  return {...prevState, [ByIds]: {...Object.fromEntries(arr.map(item => [item.id, {item}]))}};
-}
-
-function updateAllIds(prevState, arr, AllIds) {
-  return {...prevState, [AllIds]: [...arr.map(item => item.id)]};
-}
 
 
 const initialState = {
@@ -21,24 +14,34 @@ const initialState = {
   byIds: {},
   books: [],
   selectedBook: {},
+  activeBook: {},
   totalBooks: null,
   isFetching: false,
-  error: '',
   currentPage: 1,
-  booksPerPage: 5,
+  booksPerPage: 7,
+  error: '',
 };
 
 export const bookReducers = (state = initialState, action) => {
 
   switch (action.type) {
 
+    case SET_HOVERED_BOOK: {
+      return {
+        ...state,
+        activeBook: {...state.byIds[action.payload].book}
+      }
+    }
+
     case FETCH_BOOKS_SUCCESS: {
       const {books, totalBooks} = action.payload;
+      const activeBook = books[0];
       return {
         ...state,
         allIds: [...books.map(book => book.id)],
         byIds: {...Object.fromEntries(books.map(book => [book.id, {book}]))},
         books: [...books],
+        activeBook: activeBook,
         totalBooks: totalBooks,
         isFetching: false,
       };
@@ -79,10 +82,9 @@ export const bookReducers = (state = initialState, action) => {
     }
 
     case SET_BOOKS_PER_PAGE: {
-      const booksPerPage = action.payload;
       return {
         ...state,
-        booksPerPage: booksPerPage
+        booksPerPage: action.payload
       };
     }
     default:

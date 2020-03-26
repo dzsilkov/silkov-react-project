@@ -54,9 +54,11 @@ export const signInFailure = error => {
 export const SET_ACTIVE_USER = 'SET_ACTIVE_USER';
 export const setActiveUser = user => {
   const userBooksIds = [...user.books.map(book => book.id)];
+  const userReadBooksIds = [...user.books.filter(book => book.read).map(item => item.id)];
+  const userFavouriteBooksIds = [...user.books.filter(book => book.favourite).map(item => item.id)];
   return {
     type: SET_ACTIVE_USER,
-    payload: {...user, userBooksIds}
+    payload: {...user, userBooksIds, userReadBooksIds, userFavouriteBooksIds}
   };
 };
 
@@ -111,6 +113,7 @@ export const authenticateUser = token => {
     return authUsers.getAuthenticate(token)
       .then(res => {
         if (typeof res !== 'string') {
+          // dispatch(authenticateUserSuccess(res))
           dispatch(setActiveUser(res));
         } else {
           dispatch(authenticateUserFailure(res));
@@ -133,11 +136,15 @@ export const updateActiveUserBooks = books => {
 
 };
 
+export const resetAuthForm = () => {
+
+};
+
 export const signOutUser = () => {
   return dispatch => {
     dispatch(signOutRequest());
     dispatch(deleteAuth());
-    dispatch(clearLibrary())
+    dispatch(clearLibrary());
   };
 };
 
@@ -146,9 +153,9 @@ export const signInUser = user => {
     dispatch(signInRequest());
     usersApi.signInUser(user)
       .then(res => {
-        console.log(res);
         if (typeof res !== 'string' && res.token) {
           dispatch(setAuthToken(res.token));
+          dispatch(signInSuccess());
           dispatch(authenticateUser(res.token));
         } else {
           dispatch(signInFailure(res));
@@ -167,6 +174,7 @@ export const signUpUser = user => {
       .then(res => {
         if (typeof res !== 'string' && res.token) {
           dispatch(setAuthToken(res.token));
+          dispatch(signUpSuccess());
           dispatch(authenticateUser(res.token));
         } else {
           dispatch(signUpFailure(res));

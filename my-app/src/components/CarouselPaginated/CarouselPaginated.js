@@ -1,29 +1,46 @@
 import React from 'react';
-import { useRouteNode } from 'react-router5'
 
 import './CarouselPaginated.css';
-import CarouselItems from './CarouselItems/CarouselItems';
-import BookDetail from '../BookDetails/BookDetail';
+import CarouselPaginatedItems from '../CarouselPaginatedItems/CarouselPaginatedItems';
+import CarouselVisibilityShow from '../CarouselVisibilityShow/CarouselVisibilityShow';
+import Pagination from '../Pagination/Pagination';
 
-const CarouselPaginated = (props) => {
-  const {books, nextPage, prevPage} = props;
+const CarouselPaginated = props => {
+  const {
+    books,
+    nextPage,
+    prevPage,
+    currentPage,
+    totalItems,
+    itemsPerPage,
+    paginate,
+    setBooksPerPage,
+    handlerHover
+  } = props;
 
   const loading = false;
 
   return (
-    <section>
-      <CarouselItems
+    <div className="booksNav">
+      <CarouselVisibilityShow
+        setBooksPerPage={setBooksPerPage}
+        itemsPerPage={itemsPerPage}
+      />
+      <CarouselPaginatedItems
         loading={loading}
         books={books}
         nextPage={nextPage}
         prevPage={prevPage}
+        handlerHover={handlerHover}
       />
-    </section>
+      <Pagination
+        currentPage={currentPage}
+        itemsPerPage={itemsPerPage}
+        totalItems={totalItems}
+        paginate={paginate}
+      />
+    </div>
   );
 };
 
 export default CarouselPaginated;
-
-// {route.name === 'books.book' ? (
-//   <BookDetail {...books[route.params.id]} key={route.params.id} />
-// ) : null}

@@ -10,16 +10,30 @@
   will-change: transform;
 }
 
-.libraryListItem:nth-child(2n) {
-  background: rgba(0, 0, 0, .05);
+.libraryListItemActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
 }
 
-.libraryListItemHeader h4 {
+.libraryListItem:nth-child(2n) {
+  background: #dddddd;
+}
+
+.libraryListItemLink {
+  flex: 3;
+}
+
+
+.libraryListItemAuthor {
+  display: block;
   font-size: 1.1em;
   font-weight: 600;
 }
 
-.libraryListItemHeader p {
+.libraryListItemTitle {
+  display: block;
   font-size: 1em;
   font-weight: 400;
 }
@@ -27,7 +41,6 @@
 .actionFavourite,
 .actionRead,
 .actionRemove {
-  padding-left: .8em;
   cursor: pointer;
 }
 

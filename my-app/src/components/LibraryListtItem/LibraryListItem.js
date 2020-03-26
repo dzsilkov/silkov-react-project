@@ -1,47 +1,60 @@
 import React from 'react';
-import './LibraryListItem.css';
+import { Link } from 'react-router5';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook, faHeart, faMinusCircle, faBookDead } from '@fortawesome/free-solid-svg-icons';
+import { faBan, faBook, faHeart, faMinusCircle, faBookDead, faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import './LibraryListItem.css';
 
 
 function LibraryListItem({handleClick, item: {author, title, id, favourite, read}}) {
 
   const favouriteColor = favourite ? '#ff6347' : '#b8948e';
-  const listenedColor = read ? '#1ad64d' : '#978863';
-  const removeColor = read && favourite ? '#ff6347' : '#1ad64d';
-  const removeIcon = read && favourite ? faMinusCircle : faBookDead;
-
+  const readColor = read ? '#1ad64d' : '#978863';
+  const removeColor = read && favourite ? '#1ad64d' : '#ff6347';
+  const removeIcon = read ? faMinusCircle : faBan;
+  const readIcon = read ? faBookOpen : faBook;
 
   return (
-    <li className="libraryListItem"
+
+    <div className="libraryListItem"
         onClick={handleClick}
         id={id}>
-      <div className="libraryListItemHeader">
-        <h4>{author}</h4>
-        <p>{title}</p>
+      <div className="libraryListItemLink">
+        <Link
+          routeName="book"
+          routeParams={{id}}
+          activeClassName="active"
+        >
+          <div className="libraryListItemHeader">
+            <h4 className="libraryListItemAuthor">{author}</h4>
+            <p className="libraryListItemTitle">{title}</p>
+          </div>
+        </Link>
       </div>
       <div className="libraryListItemActions">
-        <span
-          className="actionFavourite"
-        >
+        <span className="actionFavourite">
         <FontAwesomeIcon
           id="favourite"
           color={favouriteColor}
           size="2x"
           icon={faHeart}/>
       </span>
-        <span
-          className="actionRead"
-        >
-        <FontAwesomeIcon id="read" color={listenedColor} size="2x" icon={faBook}/>
+        <span className="actionRead">
+        <FontAwesomeIcon
+          id="read"
+          color={readColor}
+          size="2x"
+          icon={readIcon}/>
       </span>
-        <span
-          className="actionRemove"
+        <span className="actionRemove"
         >
-        <FontAwesomeIcon id="delete" color={removeColor} size="2x" icon={removeIcon}/>
-      </span>
+              <FontAwesomeIcon
+                id="delete"
+                color={removeColor}
+                size="2x"
+                icon={removeIcon}/>
+            </span>
       </div>
-    </li>
+    </div>
   );
 }
 

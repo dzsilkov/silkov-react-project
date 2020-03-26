@@ -1,13 +1,7 @@
 import { connect } from 'react-redux';
 import Library from '../../components/Library/Library';
-
-import {
-  getAllLibraryBooks,
-  getUserReadBooks,
-  getUserFavouriteBooks,
-} from './selectors';
-
 import { fetchLibraryBooks, updateUserBooks, deleteUserBook } from './actions';
+import { getAllLibraryBooks, getUserFavouriteBooks, getUserReadBooks } from '../../redux/selectors/selectors';
 
 
 const mapStateToProps = state => {

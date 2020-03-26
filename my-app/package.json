@@ -6,6 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/free-regular-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@reduxjs/toolkit": "^1.2.5",
     "@testing-library/jest-dom": "^4.2.4",
@@ -18,9 +19,6 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-redux": "^7.2.0",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "react-router5": "^8.0.0",
     "react-scripts": "3.4.0",
     "react-transition-group": "^1.2.1",
     "redux": "^4.0.5",
@@ -28,7 +26,8 @@
     "redux-thunk": "^2.3.0",
     "router5": "^8.0.0",
     "router5-plugin-browser": "8.0.0",
-    "router5-plugin-logger": "8.0.0"
+    "router5-plugin-logger": "8.0.0",
+    "classnames": "^2.2.6"
   },
   "scripts": {
     "watch:style": "postcss src/styles/index.css -o src/styles/tailwind.css",

@@ -1,11 +1,19 @@
 .pagination {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.pageItem {
-
+.pagination-label {
+  font-size: 1.5em;
+  color: #dddddd;
+  font-weight: 500;
+  margin: .6em;
 }
 
-.pageLink {
-
+.paginationList {
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

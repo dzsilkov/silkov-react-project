@@ -17,8 +17,8 @@ export const booksApi = {
   },
 
   fetchUserBooks(books) {
-    const req = strRequest(books);
-    return axios.get(`${BOOKS_API_BASE_ADDRESS}/${BOOKS_ENDPOINT}?${req}`)
+    const opt = strRequest(books);
+    return axios.get(`${BOOKS_API_BASE_ADDRESS}/${BOOKS_ENDPOINT}?${opt}`)
   }
 };
 

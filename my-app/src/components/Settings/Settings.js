@@ -62,7 +62,6 @@ class Settings extends React.Component {
       settingsItems: [],
       hoveredItem: {}
     };
-
     this.handlerHover = this.handlerHover.bind(this);
   }
 
@@ -90,11 +89,13 @@ class Settings extends React.Component {
     return (
       <section className="settings">
         <div className="settings-col">
+          <SettingsOutlet/>
           <SettingsLogo hoveredItem={hoveredItem}/>
         </div>
         <div className="settings-col">
-          <SettingsList settingsItems={settingsItems} handlerHover={this.handlerHover}/>
-          <SettingsOutlet/>
+          <SettingsList
+            settingsItems={settingsItems}
+            handlerHover={this.handlerHover}/>
         </div>
       </section>
     );

@@ -60,11 +60,11 @@ p {
 .actionBookButton {
   font-size: 1rem;
   display: block;
-  height: 2.6em;
-  width: 2.6em;
+  height: 3em;
+  width: 3em;
   position: relative;
   text-align: center;
-  line-height: 2.2em;
+  line-height: 3em;
   border-radius: 50%;
   color: #282e34;
   transition: all ease 0.2s;
@@ -75,7 +75,7 @@ p {
 .actionBookButton::after {
   content: "";
   position: absolute;
-  top: -.6em;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -118,4 +118,15 @@ p {
     transform: scale(1);
     border-radius: .2em;
   }
+}
+
+.authorRank {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rank {
+  color: gold;
+
 }

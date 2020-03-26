@@ -1,11 +1,12 @@
 import React from 'react';
 import './Pagination.css';
+import PaginationItem from '../PaginationItem/PaginationItem';
 
-const Pagination = ({currentPage, itemsPerPage, totalItems, paginate, prevPage, nextPage, setItemsPerPage}) => {
-
+const Pagination = props => {
+  const {currentPage, itemsPerPage, totalItems, paginate, prevPage, nextPage, setItemsPerPage} = props;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  function createRangeForPagination(current, end, delta) {
+  const createRangeForPagination = (current, end, delta) => {
     const prevItem = current - delta;
     const nextItem = current + delta + 1;
     const arrRange = [];
@@ -15,9 +16,11 @@ const Pagination = ({currentPage, itemsPerPage, totalItems, paginate, prevPage, 
       }
     }
     return arrRange;
-  }
+  };
 
-  function getSeparateRange(arr, separator) {
+  const range = createRangeForPagination(currentPage, totalPages, 1);
+
+  const createPaginationArr = (arr, separator, start, end) => {
     let item;
     const rangeWithSeparate = [];
     for (let i = 0; i < arr.length; i++) {
@@ -32,69 +35,27 @@ const Pagination = ({currentPage, itemsPerPage, totalItems, paginate, prevPage, 
       item = arr[i];
     }
     return rangeWithSeparate;
-  }
+  };
 
-  const pagination = getSeparateRange(createRangeForPagination(currentPage, totalPages, 1), '...');
+  const paginationArr = createPaginationArr(range, '...', currentPage, totalPages);
+
+  const pagination = paginationArr.map(number => {
+    return (
+      <PaginationItem
+        key={number.toString()}
+        active={number === currentPage}
+        number={number}
+        paginate={number === currentPage || number === '...' ? null : paginate}
+      />
+    );
+  });
 
   return (
-    <div>
-      <div className="pagination">
-        <div className="page-item"
-             onClick={prevPage}
-        >
-          <span className="page-link">
-            prev
-          </span>
-        </div>
-        {pagination.map(number => {
-          return (
-            <div className="page-item"
-                 key={number}
-            >
-              <span className="page-link"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      paginate(number);
-                    }}
-              >
-                {number}
-              </span>
-            </div>
-          );
-        })}
-        <div className="page-item"
-        >
-          <span className="page-link"
-                onClick={nextPage}
-          >
-            next
-          </span>
-        </div>
-      </div>
-
-
-      <div className="pagination">
-        <div className="page-item">
-      <span onClick={() => setItemsPerPage(3)} className="page-link">
-      {'3'}
-      </span>
-        </div>
-        <div className="page-item">
-      <span onClick={() => setItemsPerPage(5)} className="page-link">
-      {'5'}
-      </span>
-        </div>
-        <div className="page-item">
-      <span onClick={() => setItemsPerPage(6)} className="page-link">
-      {'6'}
-      </span>
-        </div>
-        <div className="page-item">
-      <span onClick={() => setItemsPerPage(10)} className="page-link">
-      {'10'}
-      </span>
-        </div>
-      </div>
+    <div className="pagination">
+      <span className="pagination-label">Go to page:</span>
+      <ul className="paginationList">
+        {pagination}
+      </ul>
     </div>
   );
 };
