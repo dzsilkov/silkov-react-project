@@ -4,8 +4,10 @@ import './Accounts.css'
 
 const Accounts = (props) => {
   return (
-    <div>
-      <h3>Accounts</h3>
+    <div className="serviceInfo">
+      <span className="serviceInfoContainer">
+        <h3 className="serviceTitle">For Service Use Only</h3>
+      </span>
     </div>
   );
 };

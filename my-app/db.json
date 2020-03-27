@@ -79,24 +79,6 @@
       ],
       "token": "Books_WQICtNSkQbou6cy1rBcg6",
       "id": 6
-    },
-    {
-      "firstName": "Denis",
-      "lastName": "doe",
-      "email": "avd-alex@yandex.ru",
-      "password": "33333",
-      "books": [],
-      "token": "Books_h66x-gvWDctZdMYXsLA6i",
-      "id": 7
-    },
-    {
-      "firstName": "Denis",
-      "lastName": "doe",
-      "email": "dsilk@yandex.ru",
-      "password": "00000",
-      "books": [],
-      "token": "Books_E4zkxq4EKtfS62rQmG0eF",
-      "id": 8
     }
   ],
   "books": [

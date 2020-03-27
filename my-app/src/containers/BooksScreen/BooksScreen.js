@@ -18,8 +18,6 @@ const mapStateToProps = state => {
   const currentPage = getCurrentPage(state);
   const book = getSelectedBook(state);
   const activeBook =  getActiveBook(state);
-
-
   return {book, books, totalBooks, booksPerPage, currentPage, activeBook};
 };
 

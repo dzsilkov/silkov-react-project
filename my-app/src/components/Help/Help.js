@@ -1,15 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import './Help.css';
 
 const Help = (props) => {
   return (
-    <div>
-      <h3>Help</h3>
+    <div className="serviceInfo">
+      <span className="serviceInfoContainer">
+        <h3 className="serviceTitle">Sorry... Under Construction...</h3>
+      </span>
     </div>
   );
 };
-
-Help.propTypes = {};
-Help.defaultProps = {};
 
 export default Help;

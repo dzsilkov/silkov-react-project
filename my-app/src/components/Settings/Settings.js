@@ -87,17 +87,19 @@ class Settings extends React.Component {
   render() {
     const {settingsItems, hoveredItem} = this.state;
     return (
-      <section className="settings">
-        <div className="settings-col">
+      <>
+        <section className="settings">
+          <div className="settings-col">
+            <SettingsLogo hoveredItem={hoveredItem}/>
+          </div>
           <SettingsOutlet/>
-          <SettingsLogo hoveredItem={hoveredItem}/>
-        </div>
-        <div className="settings-col">
-          <SettingsList
-            settingsItems={settingsItems}
-            handlerHover={this.handlerHover}/>
-        </div>
-      </section>
+          <div className="settings-col">
+            <SettingsList
+              settingsItems={settingsItems}
+              handlerHover={this.handlerHover}/>
+          </div>
+        </section>
+      </>
     );
   }
 

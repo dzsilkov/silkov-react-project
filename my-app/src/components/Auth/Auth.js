@@ -11,8 +11,8 @@ export class Auth extends React.Component {
       initialUser: {
         firstName: '',
         lastName: '',
-        email: '',
-        password: '',
+        email: 'test@test.com',
+        password: '00000',
       },
       isLoggedIn: false
     };

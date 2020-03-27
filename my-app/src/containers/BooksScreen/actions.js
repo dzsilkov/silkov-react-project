@@ -47,7 +47,7 @@ export const setCurrentPage = pageNumber => {
 export const SET_BOOKS_PER_PAGE = 'SET_BOOKS_PER_PAGE';
 export const SET_ALL_BOOKS_PER_PAGE = 'SET_ALL_BOOKS_PER_PAGE';
 export const setBooksPerPage = filter => {
-  if (filter === 'all') {
+  if (typeof filter === 'string') {
     return {
       type: SET_ALL_BOOKS_PER_PAGE,
       payload: filter,
@@ -69,9 +69,13 @@ export const fetchBookByIdSuccess = book => {
 };
 
 export const fetchBooks = (currentPage, pageSize) => {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch(fetchBooksRequest());
     dispatch(toggleIsFetching(true));
+    const {books: {booksPerPage}} = getState();
+    if(typeof booksPerPage === 'string') {
+      currentPage = 1;
+    }
     return booksApi.fetchBooks(currentPage, pageSize)
       .then(res => {
         dispatch(fetchBooksSuccess(res.data, res.headers[`x-total-count`]));
