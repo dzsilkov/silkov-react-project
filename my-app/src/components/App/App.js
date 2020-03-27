@@ -10,9 +10,6 @@ import Spinner from '../Spinner/Spinner';
 import Error from '../Error/Error';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     const {getAuth} = this.props;

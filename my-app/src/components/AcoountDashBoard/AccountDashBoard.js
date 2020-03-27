@@ -2,13 +2,10 @@ import React from 'react';
 import { Link } from 'react-router5';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index.es';
 import {
-  faUserAlt,
-  faUserNinja,
   faUserTie,
   faBook,
   faHeart,
   faBookOpen,
-  faBookDead
 } from '@fortawesome/free-solid-svg-icons';
 import './AccountsDashBoard.css';
 import { useRoute } from 'react-router5';

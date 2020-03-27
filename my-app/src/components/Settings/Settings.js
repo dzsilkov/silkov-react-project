@@ -4,6 +4,7 @@ import { faUserCircle, faCogs, faGlobe, faQuestion, faLocationArrow } from '@for
 import SettingsList from '../SettingsList/SettingsList';
 import SettingsLogo from '../SettingsLogo/SettingsLogo';
 import SettingsOutlet from '../SettingsOutlet/SettingsOutlet';
+import { faCog } from '@fortawesome/free-solid-svg-icons/index';
 
 export const settingsItems = [
   {
@@ -21,7 +22,7 @@ export const settingsItems = [
     id: 'about',
     title: 'About',
     status: false,
-    icon: faCogs,
+    icon: faCog,
     active: 'inActive',
     link: 'settings.about',
     routeOptions: {}

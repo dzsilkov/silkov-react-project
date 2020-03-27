@@ -9,7 +9,29 @@
   align-items: center;
 }
 
+.logo {
+}
+
 .logo:hover {
   color: rgba(255, 255, 255, 1);
   transform: scale(1.1);
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  60% {
+    transform: rotate(60deg);
+  }
+  90% {
+    transform: rotate(340deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

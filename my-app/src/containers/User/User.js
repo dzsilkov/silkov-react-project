@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { signUpUser, signInUser, signOutUser } from './../User/actions';
 import {

@@ -11,7 +11,9 @@ const SettingsLogo = ({hoveredItem: {icon}}) => {
   return (
     <div className="settingsLogo">
       <span className="settingsLogoContainer">
-        <FontAwesomeIcon size="10x" icon={logo}/>
+        <FontAwesomeIcon
+          className="settingsLogoIcon"
+          size="10x" icon={logo}/>
       </span>
     </div>
   );

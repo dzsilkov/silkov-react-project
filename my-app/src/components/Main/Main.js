@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRouteNode } from 'react-router5';
-import { router } from '../../router/router';
 import NotFound from '../NotFound/NotFound';
 import BooksScreen from '../../containers/BooksScreen/BooksScreen';
 import Settings from '../Settings/Settings';

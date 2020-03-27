@@ -3,7 +3,7 @@ import './Pagination.css';
 import PaginationItem from '../PaginationItem/PaginationItem';
 
 const Pagination = props => {
-  const {currentPage, itemsPerPage, totalItems, paginate, prevPage, nextPage, setItemsPerPage} = props;
+  const {currentPage, itemsPerPage, totalItems, paginate} = props;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const createRangeForPagination = (current, end, delta) => {
