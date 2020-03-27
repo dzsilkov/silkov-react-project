@@ -27,18 +27,13 @@
           "favourite": true
         },
         {
-          "id": "059035342X",
-          "read": false,
-          "favourite": true
-        },
-        {
           "id": "140268863",
-          "read": false,
+          "read": true,
           "favourite": false
         },
         {
           "id": "451524934",
-          "read": false,
+          "read": true,
           "favourite": true
         },
         {
@@ -55,6 +50,16 @@
           "id": "156028352",
           "read": false,
           "favourite": false
+        },
+        {
+          "id": "059035342X",
+          "read": false,
+          "favourite": false
+        },
+        {
+          "id": "143110438",
+          "read": true,
+          "favourite": true
         }
       ],
       "token": "Books_hbR6o-nzvBb7rzaVIChrF",
