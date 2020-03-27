@@ -18,8 +18,6 @@ const CarouselPaginated = props => {
     handlerHover
   } = props;
 
-  const loading = false;
-
   return (
     <div className="booksNav">
       <CarouselVisibilityShow
@@ -27,18 +25,19 @@ const CarouselPaginated = props => {
         itemsPerPage={itemsPerPage}
       />
       <CarouselPaginatedItems
-        loading={loading}
         books={books}
         nextPage={nextPage}
         prevPage={prevPage}
         handlerHover={handlerHover}
       />
+
       <Pagination
         currentPage={currentPage}
         itemsPerPage={itemsPerPage}
         totalItems={totalItems}
         paginate={paginate}
       />
+
     </div>
   );
 };

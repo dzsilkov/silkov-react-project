@@ -12,8 +12,17 @@ class Library extends React.Component {
   }
 
   componentDidMount() {
-    const {fetchLibraryBooks} = this.props;
-    fetchLibraryBooks();
+    const {fetchLibraryBooks, isAuth} = this.props;
+    if (isAuth) {
+      fetchLibraryBooks();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const {fetchLibraryBooks, isAuth} = this.props;
+    if (prevProps.isAuth !== isAuth) {
+      fetchLibraryBooks();
+    }
   }
 
   toggleHandler(e) {
@@ -34,8 +43,6 @@ class Library extends React.Component {
     }
 
   }
-
-
 
 
   render() {

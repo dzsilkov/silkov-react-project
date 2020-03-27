@@ -5,7 +5,7 @@ import {
   SET_BOOKS_PER_PAGE,
   SET_CURRENT_PAGE,
   FETCH_BOOK_BY_ID_SUCCESS,
-  SET_HOVERED_BOOK,
+  SET_HOVERED_BOOK, SET_ALL_BOOKS_PER_PAGE,
 } from './actions';
 
 
@@ -81,11 +81,19 @@ export const bookReducers = (state = initialState, action) => {
       };
     }
 
+    case SET_ALL_BOOKS_PER_PAGE: {
+      return {
+        ...state,
+        booksPerPage: state.totalBooks,
+      }
+    }
+
     case SET_BOOKS_PER_PAGE: {
       return {
         ...state,
+        currentPage: initialState.currentPage,
         booksPerPage: action.payload
-      };
+      }
     }
     default:
       return state;

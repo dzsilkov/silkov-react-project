@@ -5,7 +5,7 @@
   cursor: pointer;
   border-radius: .3em;
   background: rgba(0, 0, 0, .2);
-  transition: ease .4s;
+  transition: ease .3s;
 }
 
 .carouselCardImage {
@@ -37,7 +37,7 @@
 }
 
 .carouselItemCard:hover {
-  background: rgba(0, 0, 0, .8);
+  /*background: rgba(0, 0, 0, .8);*/
   transform: scale(1.1);
 }
 

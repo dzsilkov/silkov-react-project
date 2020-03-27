@@ -4,7 +4,7 @@ import {
 } from '../actions/auth';
 
 export const initialState = {
-  authUserToken: null,
+  authUserToken: '',
 };
 
 export const auth = (state = initialState, action) => {
@@ -20,7 +20,7 @@ export const auth = (state = initialState, action) => {
     case DELETE_AUTH_TOKEN: {
       return {
         ...state,
-        authUserToken: null,
+        authUserToken: '',
       };
     }
 

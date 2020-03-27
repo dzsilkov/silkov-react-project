@@ -1,5 +1,5 @@
 import React from 'react';
-import { faStar, faPlusCircle, faStarHalfAlt, faCheckCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faPlusCircle, faStarHalfAlt, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index.es';
 import './BookDetail.css';
 

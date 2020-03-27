@@ -5,11 +5,7 @@ import CarouselPaginatedItemCard from '../CarouselPaginatedItemCard/CarouselPagi
 const CarouselPaginatedItems = (props) => {
 
 
-  const {books, nextPage, prevPage, loading, handlerHover} = props;
-
-    if (loading) {
-      return <h2>Loading...</h2>;
-    }
+  const {books, nextPage, prevPage, handlerHover} = props;
 
     const booksCards = books.map(({book, id}) => {
       return (

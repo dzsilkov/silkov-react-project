@@ -1,5 +1,5 @@
 import React from 'react';
-import { faCog, faSearch, faUserAlt, faUserNinja, faHome, faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faUserAlt, faHome, faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import './Nav.css';
 import NavList from '../NavList/NavList';
 

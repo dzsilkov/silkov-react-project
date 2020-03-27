@@ -5,7 +5,7 @@ import {
   USERS_API_BASE_ADDRESS,
   USERS_ENDPOINT,
   LOCAL_STORAGE_KEY,
-  TOKEN_START_POINT
+  TOKEN_START_POINT,
 } from './constants';
 
 

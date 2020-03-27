@@ -1,7 +1,7 @@
-export const IS_FETCHING = 'IS_FETCHING';
-export const isFetching = fetching => {
+export const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+export const toggleIsFetching = fetching => {
   return {
-    type: IS_FETCHING,
+    type: TOGGLE_IS_FETCHING,
     payload: fetching,
   };
 };

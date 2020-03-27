@@ -4,6 +4,7 @@ import { usersApi } from '../../api/usersApi/usersApi';
 import { throwError } from '../../redux/actions/error';
 import { deleteAuth, setAuthToken } from '../../redux/actions/auth';
 import { clearLibrary } from '../LibraryScreen/actions';
+import { toggleIsFetching } from '../../redux/actions/loading';
 
 
 export const AUTHENTICATE_USER_REQUEST = 'AUTHENTICATE_USER_REQUEST';
@@ -109,6 +110,7 @@ export const signOutFailure = error => {
 
 export const authenticateUser = token => {
   return dispatch => {
+    dispatch(toggleIsFetching(true));
     dispatch(authenticateUserRequest());
     return authUsers.getAuthenticate(token)
       .then(res => {
@@ -116,10 +118,12 @@ export const authenticateUser = token => {
           // dispatch(authenticateUserSuccess(res))
           dispatch(setActiveUser(res));
         } else {
-          dispatch(authenticateUserFailure(res));
+          dispatch(throwError(res));
         }
+        dispatch(toggleIsFetching(false));
       })
       .catch(error => {
+        dispatch(toggleIsFetching(false));
         dispatch(throwError(error));
       });
   };
@@ -136,10 +140,6 @@ export const updateActiveUserBooks = books => {
 
 };
 
-export const resetAuthForm = () => {
-
-};
-
 export const signOutUser = () => {
   return dispatch => {
     dispatch(signOutRequest());
@@ -150,6 +150,7 @@ export const signOutUser = () => {
 
 export const signInUser = user => {
   return dispatch => {
+    dispatch(toggleIsFetching(true));
     dispatch(signInRequest());
     usersApi.signInUser(user)
       .then(res => {
@@ -158,17 +159,20 @@ export const signInUser = user => {
           dispatch(signInSuccess());
           dispatch(authenticateUser(res.token));
         } else {
-          dispatch(signInFailure(res));
+          dispatch(throwError(res));
         }
+        dispatch(toggleIsFetching(false));
       })
       .catch(error => {
-        dispatch(signInFailure(error));
+        dispatch(toggleIsFetching(false));
+        dispatch(throwError(error));
       });
   };
 };
 
 export const signUpUser = user => {
   return dispatch => {
+    dispatch(toggleIsFetching(true));
     dispatch(signUpRequest());
     usersApi.signUpUser(user)
       .then(res => {
@@ -177,11 +181,13 @@ export const signUpUser = user => {
           dispatch(signUpSuccess());
           dispatch(authenticateUser(res.token));
         } else {
-          dispatch(signUpFailure(res));
+          dispatch(throwError(res));
         }
+        dispatch(toggleIsFetching(false));
       })
       .catch(error => {
-        dispatch(signUpFailure(error));
+        dispatch(toggleIsFetching(false));
+        dispatch(throwError(error));
       });
   };
 };

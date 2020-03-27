@@ -5,7 +5,9 @@ import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import { connect } from 'react-redux';
 import { getAuth } from '../../redux/actions/auth';
-import { getActiveUser } from '../../redux/selectors/selectors';
+import { getActiveUser, getIsAuthUser, getIsFetching } from '../../redux/selectors/selectors';
+import Spinner from '../Spinner/Spinner';
+import Error from '../Error/Error';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +20,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {activeUser} = this.props;
+    const {activeUser, isAuth, isFetching} = this.props;
 
     return (
       <div className="wrapper">
@@ -29,11 +31,13 @@ class App extends React.Component {
         </header>
         <main>
           <Main
-            activeUser={activeUser}
+            isAuth={isAuth}
           />
         </main>
         <footer>
           <Footer/>
+          <Spinner active={isFetching}/>
+          <Error/>
         </footer>
       </div>
     );
@@ -43,7 +47,9 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   const activeUser = getActiveUser(state);
-  return {activeUser};
+  const isAuth = getIsAuthUser(state);
+  const isFetching = getIsFetching(state);
+  return {activeUser, isAuth, isFetching};
 };
 
 export default connect(

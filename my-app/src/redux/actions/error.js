@@ -5,3 +5,11 @@ export const throwError = error => {
     payload: error,
   };
 };
+
+export const HIDE_ERROR = 'HIDE_ERROR';
+export const hideError = () => {
+  console.log('close')
+  return {
+    type: THROW_ERROR,
+  };
+};

@@ -9,7 +9,7 @@ function LibraryListItem({handleClick, item: {author, title, id, favourite, read
 
   const favouriteColor = favourite ? '#ff6347' : '#b8948e';
   const readColor = read ? '#1ad64d' : '#978863';
-  const removeColor = read && favourite ? '#1ad64d' : '#ff6347';
+  const removeColor = read  ? '#1ad64d' : '#ff6347';
   const removeIcon = read ? faMinusCircle : faBan;
   const readIcon = read ? faBookOpen : faBook;
 

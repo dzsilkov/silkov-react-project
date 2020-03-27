@@ -1,6 +1,8 @@
 import { usersApi } from '../../api/usersApi/usersApi';
 import { booksApi } from '../../api/booksApi/booksApi';
 import { updateActiveUserBooks } from '../User/actions';
+import { toggleIsFetching } from '../../redux/actions/loading';
+import { throwError } from '../../redux/actions/error';
 
 export const FETCH_USER_BOOKS_REQUEST = 'FETCH_USER_BOOKS_REQUEST';
 export const fetchUserBooksRequest = () => {
@@ -52,34 +54,37 @@ export const CLEAR_LIBRARY = 'CLEAR_LIBRARY';
 export const clearLibrary = () => {
   return {
     type: CLEAR_LIBRARY,
-  }
+  };
 };
 
 export const fetchLibraryBooks = () => {
   return (dispatch, getState) => {
+    dispatch(toggleIsFetching(true));
     const {activeUser: {userBooksIds}} = getState();
-    if (userBooksIds.length !== 0) {
-      dispatch(fetchUserBooksRequest());
-      return booksApi.fetchUserBooks(userBooksIds)
-        .then(({data}) => {
-          const {activeUser: {userBooks}} = getState();
-          console.log(userBooks);
-          const libraryBooks = data.map(book => {
-            return {...book, ...userBooks.find(userBook => book.id === userBook.id)};
-          });
-          const favouriteBooks = [...libraryBooks.filter(book => book.favourite)];
-          const readBooks = [...libraryBooks.filter(book => book.read)];
-          dispatch(fetchUserBooksSuccess({libraryBooks, favouriteBooks, readBooks}));
-        })
-        .catch(error => {
-          dispatch(fetchUserBooksFailure(error));
+    console.log(userBooksIds);
+    dispatch(fetchUserBooksRequest());
+    return booksApi.fetchUserBooks(userBooksIds)
+      .then(({data}) => {
+        const {activeUser: {userBooks}} = getState();
+        console.log(userBooks);
+        const libraryBooks = data.map(book => {
+          return {...book, ...userBooks.find(userBook => book.id === userBook.id)};
         });
-    }
+        const favouriteBooks = [...libraryBooks.filter(book => book.favourite)];
+        const readBooks = [...libraryBooks.filter(book => book.read)];
+        dispatch(fetchUserBooksSuccess({libraryBooks, favouriteBooks, readBooks}));
+        dispatch(toggleIsFetching(false));
+      })
+      .catch(error => {
+        dispatch(toggleIsFetching(false));
+        dispatch(throwError(error));
+      });
   };
 };
 
 export const addBookToLibrary = bookId => {
   return (dispatch, getState) => {
+    dispatch(toggleIsFetching(true));
     const {activeUser: {userId, userBooks}} = getState();
     const data = [...userBooks, {id: bookId, read: false, favourite: false}];
     dispatch(updateUserBooksRequest());
@@ -87,12 +92,18 @@ export const addBookToLibrary = bookId => {
       .then(({data: {books}}) => {
         dispatch(updateActiveUserBooks(books));
         dispatch(updateUserBooksSuccess());
+        dispatch(toggleIsFetching(false));
+      })
+      .catch(error => {
+        dispatch(toggleIsFetching(false));
+        dispatch(throwError(error));
       });
   };
 };
 
 export const deleteUserBook = bookId => {
   return (dispatch, getState) => {
+    dispatch(toggleIsFetching(true));
     const {activeUser: {userId, userBooks}} = getState();
     const data = [...userBooks.filter(book => book.id !== bookId)];
     dispatch(updateUserBooksRequest());
@@ -101,15 +112,18 @@ export const deleteUserBook = bookId => {
         dispatch(updateActiveUserBooks(books));
         dispatch(fetchLibraryBooks());
         dispatch(updateUserBooksSuccess());
+        dispatch(toggleIsFetching(false));
       })
       .catch(error => {
-        dispatch(updateUserBooksFailure(error));
+        dispatch(toggleIsFetching(false));
+        dispatch(throwError(error));
       });
   };
 };
 
 export const updateUserBooks = (id, prop) => {
   return (dispatch, getState) => {
+    dispatch(toggleIsFetching(true));
     const {activeUser: {userId, userBooks}} = getState();
     const data = [...userBooks.map(book => book.id === id ? {...book, [prop]: !book[prop]} : {...book})];
     dispatch(updateUserBooksRequest());
@@ -118,9 +132,11 @@ export const updateUserBooks = (id, prop) => {
         dispatch(updateActiveUserBooks(books));
         dispatch(fetchLibraryBooks());
         dispatch(updateUserBooksSuccess());
+        dispatch(toggleIsFetching(false));
       })
       .catch(error => {
-        dispatch(updateUserBooksFailure(error));
+        dispatch(toggleIsFetching(false));
+        dispatch(throwError(error));
       });
   };
 };

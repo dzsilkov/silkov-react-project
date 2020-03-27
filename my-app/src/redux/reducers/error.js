@@ -1,4 +1,4 @@
-import { THROW_ERROR } from '../actions/error';
+import { HIDE_ERROR, THROW_ERROR } from '../actions/error';
 
 export const initialState = {
   error: null,
@@ -12,6 +12,12 @@ export const error = (state = initialState, action) => {
       return {
         ...state,
         error: error
+      };
+
+    case HIDE_ERROR:
+      return {
+        ...state,
+        error: initialState.error
       };
 
     default:

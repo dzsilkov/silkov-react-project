@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signUpUser, signInUser, signOutUser, resetAuthForm } from './../User/actions';
+import { signUpUser, signInUser, signOutUser } from './../User/actions';
 import {
   getActiveUser,
   getAuthUserToken,
@@ -26,7 +26,6 @@ export default connect(
     signUpUser,
     signInUser,
     signOutUser,
-    resetAuthForm,
   }
 )(Auth);
 

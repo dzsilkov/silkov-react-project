@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Location = (props) => {
   return (
@@ -8,8 +7,5 @@ const Location = (props) => {
     </div>
   );
 };
-
-Location.propTypes = {};
-Location.defaultProps = {};
 
 export default Location;

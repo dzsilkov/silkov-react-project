@@ -23,6 +23,7 @@ header {
   font-size: 1rem;
   position: fixed;
   height: 6em;
+  background-color: gray;
   top: 0;
   left: 0;
   right: 0;

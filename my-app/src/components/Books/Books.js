@@ -1,6 +1,8 @@
 import React from 'react';
 import './Books.css';
 import CarouselPaginated from '../CarouselPaginated/CarouselPaginated';
+import CarouselVisibilityShow from '../CarouselVisibilityShow/CarouselVisibilityShow';
+import CarouselPaginatedShowAll from '../CarouselPaginatedSHowAll/CarouselPaginatedShowAll';
 
 class Books extends React.Component {
   constructor(props) {
@@ -66,68 +68,37 @@ class Books extends React.Component {
 
     return (
       <div className="books">
-        <img className="backImage" src={activeBook.coverImageUrl} alt="book image"/>
-        <CarouselPaginated
-          books={books}
-          prevPage={this.prevPage}
-          nextPage={this.nextPage}
-          currentPage={currentPage}
-          totalItems={totalBooks}
-          itemsPerPage={booksPerPage}
-          paginate={this.setPageNumber}
-          setBooksPerPage={setBooksPerPage}
-          handlerHover={this.handlerHover}
-        />
+        {booksPerPage === totalBooks
+          ? <>
+            <CarouselVisibilityShow
+              setBooksPerPage={setBooksPerPage}
+              itemsPerPage={booksPerPage}
+            />
+            <CarouselPaginatedShowAll
+              books={books}
+              handlerHover={this.handlerHover}
+            />
+          </>
+          :
+          <>
+            <img className="backImage" src={activeBook.coverImageUrl} alt="book image"/>
+            <CarouselPaginated
+              books={books}
+              prevPage={this.prevPage}
+              nextPage={this.nextPage}
+              currentPage={currentPage}
+              totalItems={totalBooks}
+              itemsPerPage={booksPerPage}
+              paginate={this.setPageNumber}
+              setBooksPerPage={setBooksPerPage}
+              handlerHover={this.handlerHover}
+            />
 
+          </>
+        }
       </div>
     );
   }
 }
 
 export default Books;
-
-
-{/*<div className="books">*/
-}
-{/*<Search/>*/
-}
-{/*<section>*/
-}
-{/*<div className="headerContent">*/
-}
-{/*<CarouselPaginated*/
-}
-{/*books={books}*/
-}
-{/*prevPage={this.prevPage}*/
-}
-{/*nextPage={this.nextPage}*/
-}
-{/*/>*/
-}
-
-
-{/*<Pagination*/
-}
-{/*currentPage={currentPage}*/
-}
-{/*totalItems={totalBooks}*/
-}
-{/*itemsPerPage={booksPerPage}*/
-}
-{/*paginate={this.setPageNumber}*/
-}
-{/*nextPage={this.nextPage}*/
-}
-{/*prevPage={this.prevPage}*/
-}
-{/*setItemsPerPage={this.setBooksPerPage}*/
-}
-{/*/>*/
-}
-{/*</div>*/
-}
-{/*</section>*/
-}
-{/*</div>*/
-}

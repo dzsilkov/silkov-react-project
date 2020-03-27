@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Language = (props) => {
   return (
@@ -9,7 +8,5 @@ const Language = (props) => {
   );
 };
 
-Language.propTypes = {};
-Language.defaultProps = {};
 
 export default Language;

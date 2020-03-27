@@ -8,7 +8,6 @@ const CarouselPaginatedItemCard = ({handlerHover, book: {id, coverImageUrl}}) =>
     <li className="carouselItemCard"
         onMouseEnter={handlerHover.bind(null, id)}
     >
-
       <h4 className="itemCardTitle">Open</h4>
       <div className="itemCardMedia">
         <Link
@@ -17,8 +16,6 @@ const CarouselPaginatedItemCard = ({handlerHover, book: {id, coverImageUrl}}) =>
           activeClassName="active"
         ><img className="carouselCardImage" src={coverImageUrl} alt=""/>
         </Link>
-      </div>
-      <div className="itemCardDetails">
       </div>
     </li>
   );

@@ -65,9 +65,6 @@ export class Auth extends React.Component {
               allBooksLength={allBooksLength}
               readBooksLength={readBooksLength}
               favouriteBooksLength={favouriteBooksLength}
-              // userBooks={userBooks}
-              // userFavoriteBooks={userFavoriteBooks}
-              // userReadBooks={userReadBooks}
             />
             :
             authForm
