@@ -28,12 +28,12 @@
         },
         {
           "id": "140268863",
-          "read": true,
+          "read": false,
           "favourite": false
         },
         {
           "id": "451524934",
-          "read": true,
+          "read": false,
           "favourite": true
         },
         {
@@ -52,14 +52,9 @@
           "favourite": false
         },
         {
-          "id": "059035342X",
+          "id": "439064872",
           "read": false,
           "favourite": false
-        },
-        {
-          "id": "143110438",
-          "read": true,
-          "favourite": true
         }
       ],
       "token": "Books_hbR6o-nzvBb7rzaVIChrF",
@@ -84,6 +79,15 @@
       ],
       "token": "Books_WQICtNSkQbou6cy1rBcg6",
       "id": 6
+    },
+    {
+      "firstName": "Denis",
+      "lastName": "Silkov",
+      "email": "dzsilkov@gmail.com",
+      "password": "00000",
+      "books": [],
+      "token": "Books_uBUAAxC5CAobpeg5iMoiI",
+      "id": 7
     }
   ],
   "books": [

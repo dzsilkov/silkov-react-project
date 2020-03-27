@@ -15,7 +15,7 @@
 .logo:hover {
   color: rgba(255, 255, 255, 1);
   transform: scale(1.1);
-  animation: spin 10s linear infinite;
+  /*animation: spin 10s linear infinite;*/
 }
 
 @keyframes spin {

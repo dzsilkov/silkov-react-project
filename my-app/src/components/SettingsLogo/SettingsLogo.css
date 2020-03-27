@@ -8,7 +8,7 @@
 }
 
 .settingsLogoIcon {
-  animation: spin 40s linear infinite;
+  /*animation: spin 40s linear infinite;*/
 }
 
 @keyframes spin {
