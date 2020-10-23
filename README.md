@@ -1,2 +1,2 @@
 # silkov-react-project
-Sport-Base - angular project.
+app-bookse - react, redux project.
