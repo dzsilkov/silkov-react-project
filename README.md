@@ -1,2 +1,2 @@
 # silkov-react-project
-app-bookse - react, redux project.
+app-books - react, redux project.
